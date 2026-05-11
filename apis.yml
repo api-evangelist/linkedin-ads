@@ -1,0 +1,68 @@
+aid: linkedin-ads
+name: LinkedIn Marketing API
+description: >-
+  The LinkedIn Marketing API Program provides REST APIs that help businesses
+  create LinkedIn marketing campaigns, report on campaign performance, manage
+  leads from Lead Gen Forms, target matched audiences, and grow company Pages.
+  It covers Advertising, Reporting and Analytics, Lead Sync, Matched Audiences,
+  Audience Insights, Media Planning, Conversions, Community Management, Event
+  Management, and Company Intelligence APIs. Authentication uses OAuth 2.0
+  three-legged (authorization code) flow with versioned API access.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Advertising
+  - Marketing
+  - LinkedIn
+  - Lead Generation
+  - Audience Targeting
+  - Conversions API
+  - Social Marketing
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/linkedin-ads/refs/heads/main/apis.yml
+created: '2026-05-11'
+modified: '2026-05-11'
+specificationVersion: '0.19'
+apis:
+  - aid: linkedin-ads:marketing-api
+    name: LinkedIn Marketing API
+    description: >-
+      REST API for managing LinkedIn advertising campaigns, creatives, reporting,
+      lead sync, matched audiences, conversions tracking, media planning, and
+      community management. Authentication uses OAuth 2.0 three-legged flow,
+      with required API versioning via the LinkedIn-Version header
+      (YYYYMM format).
+    humanURL: https://learn.microsoft.com/en-us/linkedin/marketing/
+    baseURL: https://api.linkedin.com
+    tags:
+      - Advertising
+      - Marketing
+      - Campaign Management
+      - Lead Sync
+      - Conversions
+      - Matched Audiences
+    properties:
+      - type: Documentation
+        url: https://learn.microsoft.com/en-us/linkedin/marketing/
+      - type: Quick Start
+        url: https://learn.microsoft.com/en-us/linkedin/marketing/quick-start
+      - type: Authentication
+        url: https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow
+      - type: API Versioning
+        url: https://learn.microsoft.com/en-us/linkedin/marketing/versioning
+      - type: Developer Portal
+        url: https://developer.linkedin.com/product-catalog/marketing
+common:
+  - type: Website
+    url: https://business.linkedin.com/marketing-solutions
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/linkedin/marketing/
+  - type: Developer Portal
+    url: https://developer.linkedin.com/product-catalog/marketing
+  - type: Sign Up
+    url: https://www.linkedin.com/developers/apps/new
+  - type: Support
+    url: https://linkedin.zendesk.com/hc/en-us
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
