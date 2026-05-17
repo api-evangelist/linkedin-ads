@@ -59,7 +59,7 @@ common:
     url: https://learn.microsoft.com/en-us/linkedin/marketing/
   - type: Developer Portal
     url: https://developer.linkedin.com/product-catalog/marketing
-  - type: Sign Up
+  - type: SignUp
     url: https://www.linkedin.com/developers/apps/new
   - type: Support
     url: https://linkedin.zendesk.com/hc/en-us
