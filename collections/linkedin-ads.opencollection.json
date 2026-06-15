@@ -1,0 +1,361 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LinkedIn Marketing API",
+    "version": "2026.05"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://www.linkedin.com/oauth/v2/authorization",
+      "accessTokenUrl": "https://www.linkedin.com/oauth/v2/accessToken",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Create an ad account",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.linkedin.com/rest/adAccounts",
+        "headers": [
+          {
+            "name": "LinkedIn-Version",
+            "value": ""
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        },
+        "auth": {
+          "type": "oauth2",
+          "flow": "authorization_code",
+          "authorizationUrl": "https://www.linkedin.com/oauth/v2/authorization",
+          "accessTokenUrl": "https://www.linkedin.com/oauth/v2/accessToken",
+          "credentials": {
+            "clientId": "{{clientId}}",
+            "clientSecret": "{{clientSecret}}"
+          }
+        }
+      },
+      "docs": "Create an ad account"
+    },
+    {
+      "info": {
+        "name": "Get an ad account",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.linkedin.com/rest/adAccounts/:adAccountId",
+        "headers": [
+          {
+            "name": "LinkedIn-Version",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "adAccountId",
+            "value": "",
+            "type": "path"
+          }
+        ],
+        "auth": {
+          "type": "oauth2",
+          "flow": "authorization_code",
+          "authorizationUrl": "https://www.linkedin.com/oauth/v2/authorization",
+          "accessTokenUrl": "https://www.linkedin.com/oauth/v2/accessToken",
+          "credentials": {
+            "clientId": "{{clientId}}",
+            "clientSecret": "{{clientSecret}}"
+          }
+        }
+      },
+      "docs": "Get an ad account"
+    },
+    {
+      "info": {
+        "name": "Create a campaign group",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.linkedin.com/rest/adAccounts/:adAccountId/adCampaignGroups",
+        "headers": [
+          {
+            "name": "LinkedIn-Version",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "adAccountId",
+            "value": "",
+            "type": "path"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        },
+        "auth": {
+          "type": "oauth2",
+          "flow": "authorization_code",
+          "authorizationUrl": "https://www.linkedin.com/oauth/v2/authorization",
+          "accessTokenUrl": "https://www.linkedin.com/oauth/v2/accessToken",
+          "credentials": {
+            "clientId": "{{clientId}}",
+            "clientSecret": "{{clientSecret}}"
+          }
+        }
+      },
+      "docs": "Create a campaign group"
+    },
+    {
+      "info": {
+        "name": "Create a campaign",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.linkedin.com/rest/adAccounts/:adAccountId/adCampaigns",
+        "headers": [
+          {
+            "name": "LinkedIn-Version",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "adAccountId",
+            "value": "",
+            "type": "path"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        },
+        "auth": {
+          "type": "oauth2",
+          "flow": "authorization_code",
+          "authorizationUrl": "https://www.linkedin.com/oauth/v2/authorization",
+          "accessTokenUrl": "https://www.linkedin.com/oauth/v2/accessToken",
+          "credentials": {
+            "clientId": "{{clientId}}",
+            "clientSecret": "{{clientSecret}}"
+          }
+        }
+      },
+      "docs": "Create a campaign"
+    },
+    {
+      "info": {
+        "name": "Create an ad creative",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.linkedin.com/rest/adAccounts/:adAccountId/creatives",
+        "headers": [
+          {
+            "name": "LinkedIn-Version",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "adAccountId",
+            "value": "",
+            "type": "path"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        },
+        "auth": {
+          "type": "oauth2",
+          "flow": "authorization_code",
+          "authorizationUrl": "https://www.linkedin.com/oauth/v2/authorization",
+          "accessTokenUrl": "https://www.linkedin.com/oauth/v2/accessToken",
+          "credentials": {
+            "clientId": "{{clientId}}",
+            "clientSecret": "{{clientSecret}}"
+          }
+        }
+      },
+      "docs": "Create an ad creative"
+    },
+    {
+      "info": {
+        "name": "List ad targeting facets",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.linkedin.com/rest/adTargetingFacets",
+        "headers": [
+          {
+            "name": "LinkedIn-Version",
+            "value": ""
+          }
+        ],
+        "auth": {
+          "type": "oauth2",
+          "flow": "authorization_code",
+          "authorizationUrl": "https://www.linkedin.com/oauth/v2/authorization",
+          "accessTokenUrl": "https://www.linkedin.com/oauth/v2/accessToken",
+          "credentials": {
+            "clientId": "{{clientId}}",
+            "clientSecret": "{{clientSecret}}"
+          }
+        }
+      },
+      "docs": "List ad targeting facets"
+    },
+    {
+      "info": {
+        "name": "Discover entities within a targeting facet",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.linkedin.com/rest/adTargetingEntities",
+        "headers": [
+          {
+            "name": "LinkedIn-Version",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "q",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "queryVersion",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "facet",
+            "value": "",
+            "type": "query",
+            "description": "Facet URN, e.g. `urn:li:adTargetingFacet:seniorities`."
+          }
+        ],
+        "auth": {
+          "type": "oauth2",
+          "flow": "authorization_code",
+          "authorizationUrl": "https://www.linkedin.com/oauth/v2/authorization",
+          "accessTokenUrl": "https://www.linkedin.com/oauth/v2/accessToken",
+          "credentials": {
+            "clientId": "{{clientId}}",
+            "clientSecret": "{{clientSecret}}"
+          }
+        }
+      },
+      "docs": "Discover entities within a targeting facet"
+    },
+    {
+      "info": {
+        "name": "Estimate audience count",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.linkedin.com/rest/audienceCounts",
+        "headers": [
+          {
+            "name": "LinkedIn-Version",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "q",
+            "value": "",
+            "type": "query"
+          }
+        ],
+        "auth": {
+          "type": "oauth2",
+          "flow": "authorization_code",
+          "authorizationUrl": "https://www.linkedin.com/oauth/v2/authorization",
+          "accessTokenUrl": "https://www.linkedin.com/oauth/v2/accessToken",
+          "credentials": {
+            "clientId": "{{clientId}}",
+            "clientSecret": "{{clientSecret}}"
+          }
+        }
+      },
+      "docs": "Estimate audience count"
+    },
+    {
+      "info": {
+        "name": "Get ad budget pricing",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.linkedin.com/rest/adBudgetPricing",
+        "headers": [
+          {
+            "name": "LinkedIn-Version",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "account",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "bidType",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "campaignType",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "matchType",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "q",
+            "value": "",
+            "type": "query"
+          }
+        ],
+        "auth": {
+          "type": "oauth2",
+          "flow": "authorization_code",
+          "authorizationUrl": "https://www.linkedin.com/oauth/v2/authorization",
+          "accessTokenUrl": "https://www.linkedin.com/oauth/v2/accessToken",
+          "credentials": {
+            "clientId": "{{clientId}}",
+            "clientSecret": "{{clientSecret}}"
+          }
+        }
+      },
+      "docs": "Get ad budget pricing"
+    }
+  ],
+  "bundled": true
+}
