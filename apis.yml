@@ -44,22 +44,22 @@ apis:
     properties:
       - type: Documentation
         url: https://learn.microsoft.com/en-us/linkedin/marketing/
-      - type: Quick Start
+      - type: GettingStarted
         url: https://learn.microsoft.com/en-us/linkedin/marketing/quick-start
       - type: Authentication
         url: https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow
-      - type: API Versioning
+      - type: Versioning
         url: https://learn.microsoft.com/en-us/linkedin/marketing/versioning
-      - type: Developer Portal
+      - type: DeveloperPortal
         url: https://developer.linkedin.com/product-catalog/marketing
 common:
   - type: Website
     url: https://business.linkedin.com/marketing-solutions
   - type: Documentation
     url: https://learn.microsoft.com/en-us/linkedin/marketing/
-  - type: Developer Portal
+  - type: DeveloperPortal
     url: https://developer.linkedin.com/product-catalog/marketing
-  - type: SignUp
+  - type: Signup
     url: https://www.linkedin.com/developers/apps/new
   - type: Support
     url: https://linkedin.zendesk.com/hc/en-us
