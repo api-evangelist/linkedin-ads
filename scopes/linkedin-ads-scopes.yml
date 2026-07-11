@@ -1,0 +1,36 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/linkedin-ads-openapi.yml
+schemes:
+- name: OAuth2
+  source: openapi/linkedin-ads-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://www.linkedin.com/oauth/v2/authorization
+    tokenUrl: https://www.linkedin.com/oauth/v2/accessToken
+  description: OAuth 2.0 three-legged (authorization code) flow.
+scopes:
+- scope: r_ads
+  description: Read ads accounts, campaigns, and creatives.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/linkedin-ads-openapi.yml
+- scope: r_ads_reporting
+  description: Read ad campaign reporting data.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/linkedin-ads-openapi.yml
+- scope: r_basicprofile
+  description: Read basic profile.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/linkedin-ads-openapi.yml
+- scope: rw_ads
+  description: Read and write ads accounts, campaigns, and creatives.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/linkedin-ads-openapi.yml
