@@ -53,6 +53,8 @@ apis:
       - type: DeveloperPortal
         url: https://developer.linkedin.com/product-catalog/marketing
 common:
+  - type: AgenticAccess
+    url: agentic-access/linkedin-ads-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/linkedin-ads-vulnerability-disclosure.yml
   - type: DomainSecurity
