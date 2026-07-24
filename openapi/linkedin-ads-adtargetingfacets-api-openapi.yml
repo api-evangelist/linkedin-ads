@@ -1,0 +1,85 @@
+openapi: 3.1.0
+info:
+  title: LinkedIn Marketing AdAccounts AdTargetingFacets API
+  description: 'Partial OpenAPI 3.1 representation of the LinkedIn Marketing API for
+
+    advertising, campaign management, audience targeting, and reporting. Uses
+
+    OAuth 2.0 three-legged (authorization code) flow and requires a
+
+    `LinkedIn-Version` header in YYYYMM format on every versioned request.
+
+    Reference documentation lives at
+
+    https://learn.microsoft.com/en-us/linkedin/marketing/.
+
+    '
+  version: '2026.05'
+  contact:
+    name: LinkedIn Marketing API Program
+    url: https://learn.microsoft.com/en-us/linkedin/marketing/
+servers:
+- url: https://api.linkedin.com/rest
+  description: Versioned REST endpoint.
+security:
+- OAuth2:
+  - rw_ads
+tags:
+- name: AdTargetingFacets
+paths:
+  /adTargetingFacets:
+    get:
+      summary: List ad targeting facets
+      operationId: listAdTargetingFacets
+      security:
+      - OAuth2:
+        - r_ads
+        - rw_ads
+      parameters:
+      - $ref: '#/components/parameters/LinkedInVersion'
+      responses:
+        '200':
+          description: Available targeting facets.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  elements:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        facetName:
+                          type: string
+                        entityTypes:
+                          type: array
+                          items:
+                            type: string
+                        $URN:
+                          type: string
+      tags:
+      - AdTargetingFacets
+components:
+  parameters:
+    LinkedInVersion:
+      name: LinkedIn-Version
+      in: header
+      required: true
+      description: API version in `YYYYMM` format, e.g. `202605`.
+      schema:
+        type: string
+        pattern: ^\d{6}$
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth 2.0 three-legged (authorization code) flow.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.linkedin.com/oauth/v2/authorization
+          tokenUrl: https://www.linkedin.com/oauth/v2/accessToken
+          scopes:
+            r_ads: Read ads accounts, campaigns, and creatives.
+            rw_ads: Read and write ads accounts, campaigns, and creatives.
+            r_ads_reporting: Read ad campaign reporting data.
+            r_basicprofile: Read basic profile.
