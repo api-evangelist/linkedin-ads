@@ -9,7 +9,19 @@ description: >-
   Management, and Company Intelligence APIs. Authentication uses OAuth 2.0
   three-legged (authorization code) flow with versioned API access.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/linkedin-ads.png
 tags:
   - Advertising
   - Marketing
@@ -24,34 +36,85 @@ created: '2026-05-11'
 modified: '2026-05-11'
 specificationVersion: '0.19'
 apis:
-  - aid: linkedin-ads:marketing-api
-    name: LinkedIn Marketing API
-    description: >-
-      REST API for managing LinkedIn advertising campaigns, creatives, reporting,
-      lead sync, matched audiences, conversions tracking, media planning, and
-      community management. Authentication uses OAuth 2.0 three-legged flow,
-      with required API versioning via the LinkedIn-Version header
-      (YYYYMM format).
-    humanURL: https://learn.microsoft.com/en-us/linkedin/marketing/
-    baseURL: https://api.linkedin.com
-    tags:
-      - Advertising
-      - Marketing
-      - Campaign Management
-      - Lead Sync
-      - Conversions
-      - Matched Audiences
-    properties:
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/linkedin/marketing/
-      - type: GettingStarted
-        url: https://learn.microsoft.com/en-us/linkedin/marketing/quick-start
-      - type: Authentication
-        url: https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow
-      - type: Versioning
-        url: https://learn.microsoft.com/en-us/linkedin/marketing/versioning
-      - type: DeveloperPortal
-        url: https://developer.linkedin.com/product-catalog/marketing
+- aid: linkedin-ads:marketing-api
+  name: LinkedIn Marketing API
+  description: >-
+    REST API for managing LinkedIn advertising campaigns, creatives, reporting, lead sync, matched audiences,
+    conversions tracking, media planning, and community management. Authentication uses OAuth 2.0 three-legged
+    flow, with required API versioning via the LinkedIn-Version header (YYYYMM format).
+  humanURL: https://learn.microsoft.com/en-us/linkedin/marketing/
+  baseURL: https://api.linkedin.com
+  tags:
+  - Advertising
+  - Marketing
+  - Campaign Management
+  - Lead Sync
+  - Conversions
+  - Matched Audiences
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/linkedin/marketing/
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/linkedin/marketing/quick-start
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow
+  - type: Versioning
+    url: https://learn.microsoft.com/en-us/linkedin/marketing/versioning
+  - type: DeveloperPortal
+    url: https://developer.linkedin.com/product-catalog/marketing
+- aid: linkedin-ads:linkedin-ads-adaccounts-api
+  name: LinkedIn Marketing API AdAccounts API
+  description: The AdAccounts API from LinkedIn Marketing API — 5 operation(s) for adaccounts.
+  humanURL: https://learn.microsoft.com/en-us/linkedin/marketing/
+  baseURL: https://api.linkedin.com
+  tags:
+  - AdAccounts
+  properties:
+  - type: OpenAPI
+    url: openapi/linkedin-ads-adaccounts-api-openapi.yml
+- aid: linkedin-ads:linkedin-ads-adbudgetpricing-api
+  name: LinkedIn Marketing API AdBudgetPricing API
+  description: >-
+    The AdBudgetPricing API from LinkedIn Marketing API — 1 operation(s) for adbudgetpricing.
+  humanURL: https://learn.microsoft.com/en-us/linkedin/marketing/
+  baseURL: https://api.linkedin.com
+  tags:
+  - AdBudgetPricing
+  properties:
+  - type: OpenAPI
+    url: openapi/linkedin-ads-adbudgetpricing-api-openapi.yml
+- aid: linkedin-ads:linkedin-ads-adtargetingentities-api
+  name: LinkedIn Marketing API AdTargetingEntities API
+  description: >-
+    The AdTargetingEntities API from LinkedIn Marketing API — 1 operation(s) for adtargetingentities.
+  humanURL: https://learn.microsoft.com/en-us/linkedin/marketing/
+  baseURL: https://api.linkedin.com
+  tags:
+  - AdTargetingEntities
+  properties:
+  - type: OpenAPI
+    url: openapi/linkedin-ads-adtargetingentities-api-openapi.yml
+- aid: linkedin-ads:linkedin-ads-adtargetingfacets-api
+  name: LinkedIn Marketing API AdTargetingFacets API
+  description: >-
+    The AdTargetingFacets API from LinkedIn Marketing API — 1 operation(s) for adtargetingfacets.
+  humanURL: https://learn.microsoft.com/en-us/linkedin/marketing/
+  baseURL: https://api.linkedin.com
+  tags:
+  - AdTargetingFacets
+  properties:
+  - type: OpenAPI
+    url: openapi/linkedin-ads-adtargetingfacets-api-openapi.yml
+- aid: linkedin-ads:linkedin-ads-audiencecounts-api
+  name: LinkedIn Marketing API AudienceCounts API
+  description: The AudienceCounts API from LinkedIn Marketing API — 1 operation(s) for audiencecounts.
+  humanURL: https://learn.microsoft.com/en-us/linkedin/marketing/
+  baseURL: https://api.linkedin.com
+  tags:
+  - AudienceCounts
+  properties:
+  - type: OpenAPI
+    url: openapi/linkedin-ads-audiencecounts-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/linkedin-ads-agentic-access.yml
