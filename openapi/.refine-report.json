@@ -1,0 +1,22 @@
+{
+  "provider": "linkedin-ads",
+  "sources": [
+    "linkedin-ads-adaccounts-api-openapi.yml",
+    "linkedin-ads-adbudgetpricing-api-openapi.yml",
+    "linkedin-ads-adtargetingentities-api-openapi.yml",
+    "linkedin-ads-adtargetingfacets-api-openapi.yml",
+    "linkedin-ads-audiencecounts-api-openapi.yml"
+  ],
+  "outputs": [
+    "linkedin-ads-adaccounts-api-openapi.yml",
+    "linkedin-ads-adbudgetpricing-api-openapi.yml",
+    "linkedin-ads-adtargetingentities-api-openapi.yml",
+    "linkedin-ads-adtargetingfacets-api-openapi.yml",
+    "linkedin-ads-audiencecounts-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
