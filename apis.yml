@@ -33,7 +33,7 @@ tags:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/linkedin-ads/refs/heads/main/apis.yml
 created: '2026-05-11'
-modified: '2026-05-11'
+modified: '2026-08-13'
 specificationVersion: '0.19'
 apis:
 - aid: linkedin-ads:marketing-api
@@ -72,6 +72,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/linkedin-ads-adaccounts-api-openapi.yml
+  - type: Overlay
+    url: overlays/linkedin-ads-adaccounts-api-overlay.yaml
 - aid: linkedin-ads:linkedin-ads-adbudgetpricing-api
   name: LinkedIn Marketing API AdBudgetPricing API
   description: >-
@@ -83,6 +85,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/linkedin-ads-adbudgetpricing-api-openapi.yml
+  - type: Overlay
+    url: overlays/linkedin-ads-adbudgetpricing-api-overlay.yaml
 - aid: linkedin-ads:linkedin-ads-adtargetingentities-api
   name: LinkedIn Marketing API AdTargetingEntities API
   description: >-
@@ -94,6 +98,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/linkedin-ads-adtargetingentities-api-openapi.yml
+  - type: Overlay
+    url: overlays/linkedin-ads-adtargetingentities-api-overlay.yaml
 - aid: linkedin-ads:linkedin-ads-adtargetingfacets-api
   name: LinkedIn Marketing API AdTargetingFacets API
   description: >-
@@ -105,6 +111,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/linkedin-ads-adtargetingfacets-api-openapi.yml
+  - type: Overlay
+    url: overlays/linkedin-ads-adtargetingfacets-api-overlay.yaml
 - aid: linkedin-ads:linkedin-ads-audiencecounts-api
   name: LinkedIn Marketing API AudienceCounts API
   description: The AudienceCounts API from LinkedIn Marketing API — 1 operation(s) for audiencecounts.
@@ -115,6 +123,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/linkedin-ads-audiencecounts-api-openapi.yml
+  - type: Overlay
+    url: overlays/linkedin-ads-audiencecounts-api-overlay.yaml
 common:
   - type: AgenticAccess
     url: agentic-access/linkedin-ads-agentic-access.yml
@@ -132,12 +142,69 @@ common:
     url: https://learn.microsoft.com/en-us/linkedin/marketing/
   - type: DeveloperPortal
     url: https://developer.linkedin.com/product-catalog/marketing
-  - type: Signup
+  - type: SignUp
     url: https://www.linkedin.com/developers/apps/new
   - type: Support
     url: https://linkedin.zendesk.com/hc/en-us
   - type: Blog
     url: https://www.linkedin.com/business/marketing/blog/linkedin-ads
+  - type: Packages
+    url: packages/linkedin-ads-packages.yml
+  - type: SDKs
+    url: packages/linkedin-ads-packages.yml
+  - type: WellKnown
+    url: well-known/linkedin-ads-well-known.yml
+  - type: SecurityTxt
+    url: well-known/linkedin-ads-security.txt
+  - type: LLMsTxt
+    url: llms/linkedin-ads-llms.txt
+  - type: Conformance
+    url: conformance/linkedin-ads-conformance.yml
+  - type: ErrorCatalog
+    url: errors/linkedin-ads-error-codes.yml
+  - type: Lifecycle
+    url: lifecycle/linkedin-ads-lifecycle.yml
+  - type: StatusPage
+    url: https://www.linkedin-apistatus.com
+  - type: Deprecation
+    url: https://learn.microsoft.com/en-us/linkedin/shared/breaking-change-policy
+  - type: Security
+    url: https://hackerone.com/linkedin?view_policy=true
+  - type: Sandbox
+    url: sandbox/linkedin-ads-sandbox.yml
+  - type: Conventions
+    url: conventions/linkedin-ads-conventions.yml
+  - type: ChangeLog
+    url: changelog/linkedin-ads-changelog.yml
+  - type: DataModel
+    url: data-model/linkedin-ads-data-model.yml
+  - type: Webhooks
+    url: asyncapi/linkedin-ads-webhooks.yml
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: Plans
+    url: plans/linkedin-ads-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/linkedin-ads-rate-limits.yml
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/linkedin/marketing/integrations/ads/ads-overview
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/linkedin/marketing/quick-start
+  - type: Pricing
+    url: https://business.linkedin.com/marketing-solutions/ads/pricing
+  - type: TermsOfService
+    url: https://legal.linkedin.com/api-terms-of-use
+  - type: PrivacyPolicy
+    url: https://www.linkedin.com/legal/privacy-policy
+  - type: GitHubOrganization
+    url: https://github.com/linkedin-developers
+  - type: Postman
+    url: https://www.postman.com/linkedin-developer-apis/workspace/linkedin-marketing-solutions-versioned-apis/overview
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-08-13'
+  status: enriched
+  artifacts_added: 25
+  pass: local-v1
