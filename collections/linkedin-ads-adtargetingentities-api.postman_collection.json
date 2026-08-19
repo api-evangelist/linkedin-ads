@@ -1,0 +1,183 @@
+{
+  "item": [
+    {
+      "id": "b7ea5145-ff95-4b91-a72b-6d32ddc04afd",
+      "name": "AdTargetingEntities",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f717367f-3b87-4e98-baaa-62e034d1eb4d",
+          "name": "Discover entities within a targeting facet",
+          "request": {
+            "name": "Discover entities within a targeting facet",
+            "description": {},
+            "url": {
+              "path": [
+                "adTargetingEntities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "queryVersion",
+                  "value": "QUERY_USES_URNS"
+                },
+                {
+                  "disabled": false,
+                  "key": "facet",
+                  "value": "<string>",
+                  "description": "(Required) Facet URN, e.g. `urn:li:adTargetingFacet:seniorities`."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API version in `YYYYMM` format, e.g. `202605`.",
+                "key": "LinkedIn-Version",
+                "value": "<string>"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "r_ads rw_ads r_ads_reporting r_basicprofile"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://www.linkedin.com/oauth/v2/accessToken"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://www.linkedin.com/oauth/v2/authorization"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a272f598-040c-49da-b06e-5fdea32a762a",
+              "name": "Entities within the requested facet.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "adTargetingEntities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "queryVersion",
+                      "value": "QUERY_USES_URNS"
+                    },
+                    {
+                      "key": "facet",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version in `YYYYMM` format, e.g. `202605`.",
+                    "key": "LinkedIn-Version",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.linkedin.com/rest",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "r_ads rw_ads r_ads_reporting r_basicprofile"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://www.linkedin.com/oauth/v2/accessToken"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://www.linkedin.com/oauth/v2/authorization"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "04485484-2a65-4edd-8311-eb75a8ad664e",
+    "name": "LinkedIn Marketing AdAccounts AdTargetingEntities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Partial OpenAPI 3.1 representation of the LinkedIn Marketing API for\nadvertising, campaign management, audience targeting, and reporting. Uses\nOAuth 2.0 three-legged (authorization code) flow and requires a\n`LinkedIn-Version` header in YYYYMM format on every versioned request.\nReference documentation lives at\nhttps://learn.microsoft.com/en-us/linkedin/marketing/.\n\n\nContact Support:\n Name: LinkedIn Marketing API Program",
+      "type": "text/plain"
+    }
+  }
+}

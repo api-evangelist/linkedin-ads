@@ -1,0 +1,371 @@
+generated: '2026-08-13'
+method: searched
+source: https://learn.microsoft.com/en-us/linkedin/marketing/error-responses
+format: linkedin-service-error
+rfc9457: false
+summary: LinkedIn publishes a constant error-code registry for the Marketing API alongside the HTTP status
+  code and the message template each code renders. The codes are returned in the `code` field of the newer
+  machine-readable error envelope, which is currently emitted only by the adAccounts, adCampaignGroups
+  and adCampaigns resources; older resources return only message/serviceErrorCode/status. This is an error-code
+  registry, not RFC 9457 problem+json — there are no problem `type` URIs and the content type is application/json.
+envelope:
+  fields:
+  - name: message
+    type: string
+    description: A description of the error.
+  - name: serviceErrorCode
+    type: int
+    description: A subcode that further classifies the error.
+  - name: status
+    type: int
+    description: The HTTP status code.
+  - name: code
+    type: string
+    description: Constant error code defining the category of the error. Its presence means you received
+      the new error response.
+  - name: errorDetailType
+    type: string
+    description: Name of the schema for error detail; com.linkedin.common.error.BadRequest is the only
+      type released so far.
+  - name: errorDetails
+    type: object
+    description: inputErrors[] and conditionalInputErrors[] carrying the failing inputPath, value, allowed
+      bounds/regex and a description.
+  coverage: adAccounts, adCampaignGroups, adCampaigns
+  legacy_shape: message + serviceErrorCode + status only
+http_status_semantics:
+- status: 400
+  meaning: Bad Request — bad syntax in the request URL or body, or a validation failure.
+- status: 401
+  meaning: Unauthorized — missing, malformed, invalid, expired or revoked access token.
+- status: 403
+  meaning: Access Denied — the token lacks permission for the API or the entity.
+- status: 404
+  meaning: Resource Not Found — wrong path or entity; for Ads it can also mean a restricted API.
+- status: 405
+  meaning: Method Not Allowed.
+- status: 411
+  meaning: Length Required — POST with an empty body needs an explicit Content-Length.
+- status: 426
+  meaning: Version Header is Deprecated — the Linkedin-Version value passed has been sunset.
+- status: 429
+  meaning: Rate limit reached ("Resource level throttle limit for calls to this resource is reached."),
+    or infrastructure protection.
+- status: 500
+  meaning: Internal Server Error — includes access-token downstream verification failures. Report x-li-uuid,
+    x-li-fabric and x-li-request-id to support.
+- status: 504
+  meaning: Gateway Timeout.
+error_code_count: 88
+groups:
+- name: General Errors
+  count: 75
+  codes:
+  - code: ACTION_NOT_ALLOWED_FOR_CANCELLED_STATUS
+    status: 400
+    message_template: Action {action} not allowed for cancelled campaigns
+  - code: AUDIENCE_SIZE_TOO_SMALL
+    status: 400
+    message_template: The calculated audience size is too small for the given targeting. A minimum audience
+      size of {minValue} is needed
+  - code: BILLING_NOT_EDITABLE_FOR_LMS_ENTERPRISE
+    status: 400
+    message_template: '{field} is not editable for LMS Enterprise accounts'
+  - code: CAMPAIGN_GROUP_CREATION_NOT_ALLOWED
+    status: 400
+    message_template: Campaign Group creation is not allowed for Enterprise accounts
+  - code: CANNOT_UPDATE_BACKFILLED_CAMPAIGN_GROUPS
+    status: 400
+    message_template: Backfilled campaign groups can't be updated
+  - code: CONDITIONAL_FIELD_NOT_ALLOWED
+    status: 400
+    message_template: '{field1} is not allowed when field {field2} is set to {value2}'
+  - code: CONDITIONAL_INVALID_VALUE
+    status: 400
+    message_template: '{field1} can''t be set to {value1} if {field2} is set to {value2}'
+  - code: CONDITIONAL_MISSING_FIELD
+    status: 400
+    message_template: '{field1} is required if {field2} is set to {value2}'
+  - code: CONDITIONAL_VALUE_TOO_HIGH
+    status: 400
+    message_template: '{field1} can''t be set to {value1}; it can''t be higher than {field2} {value2}'
+  - code: CONDITIONAL_VALUE_TOO_LOW
+    status: 400
+    message_template: '{field1} can''t be set to {value1}; it can''t be lower than {field2} {value2}'
+  - code: CONVERSION_CAMPAIGN_MISSING_ASSOCIATED_CONVERSION
+    status: 400
+    message_template: Campaign being optimized for conversion should have at least one valid conversion
+      associated with it
+  - code: CREATE_NOT_ALLOWED_WITH_FAILED_CREATIVES
+    status: 400
+    message_template: Campaign creation is not allowed with creatives in failed state
+  - code: DATE_IMMUTABLE_WHEN_PASSED
+    status: 400
+    message_template: '{field} can''t be updated when it has already passed'
+  - code: DATE_TOO_EARLY
+    status: 400
+    message_template: '{field} value {value} must be no earlier than {date}'
+  - code: DELETE_ALLOWED_ONLY_FOR_DRAFT_STATUS
+    status: 400
+    message_template: Delete is allowed only in draft state
+  - code: ENTITY_WITH_SAME_KEY_ALREADY_EXISTS
+    status: 400
+    message_template: An entity with the same {field} already exists
+  - code: FAILED_TO_GET_VALID_CAMPAIGN_CONFIGURATION
+    status: 400
+    message_template: Failed to fetch valid campaign configurations for account {account} and campaign
+      group {campaignGroup}
+  - code: FAILED_TO_PROCESS_CAMPAIGN_FOR_AUDIENCE_SIZE_ESTIMATION
+    status: 400
+    message_template: Failed to process campaign for audience size estimation
+  - code: FAILED_TO_PROCESS_TARGETING_CRITERIA
+    status: 400
+    message_template: Failed to process campaign for audience size estimation
+  - code: FAILED_TO_RETRIEVE_AUDIENCE_SIZE
+    status: 500
+    message_template: Cannot fetch audience size for the given targeting criteria field
+  - code: FAILED_TO_RETRIEVE_SEGMENTS
+    status: 500
+    message_template: Cannot fetch segment information for the given targeting facets field
+  - code: FAILED_TO_SETUP_ACCOUNT_REPORTING
+    status: 500
+    message_template: Cannot create account because of internal error in setting up reporting during the
+      creation process
+  - code: FAILED_TO_VALIDATE_AGAINST_ALLOWED_CAMPAIGN_TYPES
+    status: 400
+    message_template: Failed to validate against allowed campaign type(s) for account {account}
+  - code: FIELD_CANNOT_BE_BOTH_IN_INCLUDED_AND_EXCLUDED_TARGETING
+    status: 400
+    message_template: Cannot have {field} in both included and excluded targeting
+  - code: FIELD_IMMUTABLE_FOR_NON_DRAFT_CAMPAIGNS
+    status: 400
+    message_template: '{field} can''t be updated unless in draft state'
+  - code: FIELD_LENGTH_TOO_LONG
+    status: 400
+    message_template: '{field} length {length} can''t exceeded maximum {max} length'
+  - code: FIELD_NOT_ALLOWED_FOR_ENTERPRISE_LMS_ACCOUNTS
+    status: 400
+    message_template: Account {field} must be null for Enterprise LMS accounts
+  - code: FIELD_NOT_ALLOWED
+    status: 400
+    message_template: '{field} is not allowed to be set'
+  - code: FIELD_VALUE_DOES_NOT_EXIST
+    status: 400
+    message_template: '{field} value {value} doesn''t exist'
+  - code: FIELD_VALUE_NOT_ACTIVE
+    status: 400
+    message_template: '{field} value {value} is not active'
+  - code: FIELD_VALUE_NOT_ALLOWED_FOR_SEGMENT_STATUS
+    status: 400
+    message_template: '{field} field with Ad Segment {adSegmentId} can''t be added to campaign {campaignId}
+      due to invalid segment status value {status}'
+  - code: FIELD_VALUE_TOO_HIGH
+    status: 400
+    message_template: '{field} value {value} can''t be higher than {max}'
+  - code: FIELD_VALUE_TOO_LOW
+    status: 400
+    message_template: '{field} value {value} can''t be lower than {min}'
+  - code: IMMUTABLE_ASSOCIATED_ENTITY
+    status: 400
+    message_template: Associated entity can't be changed for talent landing or sponsored update campaigns
+  - code: IMMUTABLE_CAMPAIGN_FLOOR_PRICE
+    status: 400
+    message_template: Campaign floor price can't be updated once set for Sponsored Updates, InMail, and
+      Dynamic campaigns
+  - code: IMMUTABLE_CAMPAIGN_OBJECTIVE_TYPE
+    status: 400
+    message_template: Campaign objective type can't be updated once set
+  - code: IMMUTABLE_CAMPAIGN_TARGETING_AD_ZONES
+    status: 400
+    message_template: Dynamic Ad Campaigns may not change the size or switch between mobile and non-mobile
+      adzones unless in draft mode
+  - code: INSUFFICIENT_CAMPAIGN_GROUP_BUDGET
+    status: 400
+    message_template: The campaign group needs a minimum available budget of {value1}. Currently the remaining
+      campaign group budget is {value2}. Please increase your campaign group total budget to {value3}
+      to meet the minimum amount required to proceed
+  - code: INVALID_CAMPAIGN_CONFIGURATION
+    status: 400
+    message_template: ObjectiveType {objectiveType}, CampaignFormat {format}, CampaignType {type}, OptimizationTargetType
+      {optimizationTargetType}, CostType {costType}, OffsiteDeliveryEnabled {offsiteDeliveryEnabled},
+      audienceExpansionEnabled {audienceExpansionEnabled} is not a valid CampaignConfiguration
+  - code: INVALID_ENTITLEMENT_FOR_TALENT_LEAD
+    status: 400
+    message_template: Talent Leads objective can't be created as account doesn't have valid entitlement
+  - code: INVALID_OBJECTIVE_TYPE_WITH_MYNETWORK_DELIVERY
+    status: 400
+    message_template: Ads with objective type {objectiveType} can't be served on my network page. The
+      allowed objective types are Engagement and Creative Engagement
+  - code: INVALID_PAST_ATTRIBUTE_COMBINATION
+    status: 400
+    message_template: 'Only one {attributeName} field can be populated except past and current. Past must
+      be inclusive while current is exclusive. {attributeName}sAll: {allValue} {attributeName}sPast: {pastValue}
+      {attributeName}(Current): {currentValue}'
+  - code: INVALID_SEGMENT_ID_AND_FACET_COMBINATION_PROVIDED
+    status: 400
+    message_template: Audience segment {adSegmentId} doesn't belong to the facet {value1}. The expected
+      facet is {value2}
+  - code: INVALID_BILLING_REFERENCE
+    status: 400
+    message_template: Invalid value {value} for billing reference. Must be a valid URN
+  - code: INVALID_BILLING_PARENT_REFERENCE
+    status: 400
+    message_template: Invalid value {value} for billing parent reference. Must be a valid URN
+  - code: INVALID_VALUE_BLANK_FIELD
+    status: 400
+    message_template: '{field} can''t be blank'
+  - code: INCOMPATIBLE_TARGETING_COMBINATION
+    status: 400
+    message_template: '{field} can''t be set in targeting as it''s incompatible with other targeting facets'
+  - code: INVALID_VALUE_DUPLICATE_EXIST
+    status: 400
+    message_template: '{field} value {value} includes duplicates'
+  - code: INVALID_VALUE_FOR_FIELD
+    status: 400
+    message_template: '{field} can''t be set to {value}'
+  - code: MISMATCH_FIELDS
+    status: 400
+    message_template: Value {value1} of {field1} expected to match value {value2} of {field2}
+  - code: MISSING_CAMPAIGN_GROUP_ID
+    status: 400
+    message_template: Campaign creation failed. This account has multiple campaign groups, so a campaign
+      group field must be specified
+  - code: MISSING_FIELD
+    status: 400
+    message_template: '{field} is required but missing'
+  - code: MISSING_POSITIVE_OPTION
+    status: 400
+    message_template: The positive option is required for {field} but missing
+  - code: MULTIPLE_VALIDATIONS_FAILED
+    status: 400
+    message_template: Multiple errors occurred during the input validation. Please see errorDetails for
+      more information.
+  - code: MULTIPLE_VALUES_NOT_ALLOWED
+    status: 400
+    message_template: '{field} can''t have multiple values'
+  - code: NONCHARGEABLE_NOT_ALLOWED_UNLESS_ACTIVE_ACCOUNT
+    status: 400
+    message_template: Cannot create a non chargeable account unless its status is set to ACTIVE
+  - code: NO_DELETE_ON_LMS_ENTERPRISE_CAMPAIGN_GROUPS
+    status: 400
+    message_template: Deleting campaign groups in Marketing Solutions enterprise accounts is not allowed.
+      You may change their statuses to Archived instead
+  - code: NO_PERMISSION_ON_ENTITY
+    status: 403
+    message_template: Viewer may not have permission {permission} on entity {entity}
+  - code: NO_PERMISSION_ON_FIELD
+    status: 403
+    message_template: Viewer may not have permission on {field}
+  - code: NO_PERMISSION_TO_UPDATE
+    status: 403
+    message_template: Viewer may not have permission to change {field} on {entity} from {oldValue} to
+      {newValue}
+  - code: OBJECTIVE_CHANGE_NOT_ALLOWED
+    status: 400
+    message_template: Objective can only be changed from WEBSITE_TRAFFIC/null to CREATIVE_ENGAGEMENT and
+      vice versa
+  - code: ONLY_DRAFT_CAMPAIGNS_ALLOWED_IN_DRAFT_CAMPAIGN_GROUPS
+    status: 400
+    message_template: Only draft campaigns are allowed in draft campaign groups
+  - code: SPONSORING_LANDING_PAGE_NOT_ALLOWED
+    status: 400
+    message_template: Sponsoring landing page is allowed only for Enterprise LTS accounts for dynamic
+      or sponsored updates campaigns
+  - code: START_DATE_AFTER_END_DATE
+    status: 400
+    message_template: Start date can't be set to a date after end date
+  - code: STATUS_CHANGE_NOT_ALLOWED
+    status: 400
+    message_template: '{field} can''t be changed from {beforeValue} to {afterValue}'
+  - code: TARGETING_ADZONE_CHANGE_NOT_ALLOWED
+    status: 400
+    message_template: '{field} can''t contain {values} as dynamic Ad Campaigns may not switch between
+      mobile and non-mobile Ad Zones unless in draft mode'
+  - code: TARGETING_ADZONE_COMBINATION_INVALID
+    status: 400
+    message_template: Cannot target on both mobile and desktop adZones
+  - code: TARGETING_FIELD_DEPRECATED
+    status: 400
+    message_template: Field /targeting is deprecated, please use /targetingCriteria instead
+  - code: NOT_FOUND
+    status: 404
+    message_template: Not Found
+  - code: TIMEOUT
+    status: 408
+    message_template: Request Timeout
+  - code: CONFLICT
+    status: 409
+    message_template: Write Conflict
+  - code: PRECONDITION_FAILED
+    status: 412
+    message_template: HTTP precondition header failed
+  - code: INTERNAL_ERROR
+    status: 500
+    message_template: Internal Error
+  - code: NOT_IMPLEMENTED
+    status: 501
+    message_template: Not Implemented
+  - code: UNDER_MAINTENANCE
+    status: 503
+    message_template: Under Maintenance
+- name: Account Errors
+  count: 9
+  codes:
+  - code: BATCH_CREATE_TEST_ACCOUNT_LIMIT_REACHED
+    status: 400
+    message_template: Batch create request of {count} test accounts failed. Each developer application
+      may have a maximum of {max} test account(s) associated with it.
+  - code: BLANK_ACCOUNT_NAME
+    status: 400
+    message_template: Account name can't be blank.
+  - code: CURRENCY_MISMATCH
+    status: 400
+    message_template: The currency {totalBudgetCurrency} of the {totalBudgetField} doesn't match the currency
+      {accountCurrency} of the account.
+  - code: CURRENCY_NOT_SUPPORTED
+    status: 400
+    message_template: The currency {currency} is not supported.
+  - code: DELETE_NOT_ALLOWED
+    status: 400
+    message_template: Cannot delete account {id} if the account status is not DRAFT.
+  - code: INVALID_STATUS_TRANSITION
+    status: 400
+    message_template: The status can't be updated to {afterStatus} if the previous status is {beforeStatus}.
+  - code: MISSING_PRODUCT_TYPE_FOR_ENTERPRISE_ACCOUNT
+    status: 400
+    message_template: The productType is missing. The productType is required for creating an enterprise
+      account.
+  - code: TEST_ACCOUNT_LIMIT_REACHED
+    status: 400
+    message_template: Cannot create another test account. Each developer application may have a maximum
+      of {max} test account(s) associated with it.
+  - code: UPDATE_REFERENCE_NOT_ALLOWED
+    status: 400
+    message_template: Reference for personal business and enterprise accounts can't be updated if the
+      account has campaigns.
+- name: Account User Errors
+  count: 4
+  codes:
+  - code: ACCOUNT_ID_MISMATCH_IN_PARAM_AND_BODY
+    status: 400
+    message_template: The account id {account_id} in the query parameters doesn't match the account id
+      {account_id} in the body.
+  - code: MEMBER_HAD_UNCONFIRMED_EMAIL
+    status: 400
+    message_template: A confirmed, primary email is required but is not present for account {account}.
+      Please set a primary email and make sure it's confirmed.
+  - code: MULTIPLE_ACCOUNTS_UNSUPPORTED
+    status: 400
+    message_template: This request has multiple accounts associated with it, but batch request only supports
+      operations on a single account. Separate the requests by account URN.
+  - code: USER_MISMATCH_IN_PARAM_AND_BODY
+    status: 400
+    message_template: The user id {user_id} in the query parameters doesn't match the user id {user_id}
+      in the body
+x-evidence:
+  fetched: '2026-08-13'
+  checks:
+  - url: https://learn.microsoft.com/en-us/linkedin/marketing/error-responses
+    http_status: 200
+  - url: https://learn.microsoft.com/en-us/linkedin/shared/api-guide/concepts/error-handling
+    http_status: 200

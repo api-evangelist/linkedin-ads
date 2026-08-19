@@ -1,0 +1,128 @@
+generated: '2026-08-13'
+method: searched
+source: https://learn.microsoft.com/en-us/linkedin/shared/api-guide/concepts
+summary: >-
+  The Marketing API is a Rest.li 2.0 surface, not a plain REST surface: entities
+  are addressed by URN, collections are queried with named finders (q=criteria),
+  fields are selected with Rest.li projections, and both a protocol header and a
+  dated version header are required on essentially every call. There is no
+  idempotency contract of any kind — no Idempotency-Key header, no request
+  fingerprinting, no documented safe-retry semantics — so an agent retrying a
+  POST to /rest/adCampaigns can and will create a duplicate campaign.
+base_url: https://api.linkedin.com/rest
+authentication:
+  style: OAuth 2.0 bearer token (3-legged authorization code)
+  header: 'Authorization: Bearer {token}'
+  access_token_ttl: 60 days (expires_in 5184000)
+  refresh_token: supported; longer-lived than the access token
+  docs: https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow
+  artifact: authentication/linkedin-ads-authentication.yml
+required_headers:
+  - name: Linkedin-Version
+    value: YYYYMM (e.g. 202607)
+    required: true
+    note: The latest version is NOT applied by default; an unversioned call is rejected.
+  - name: X-Restli-Protocol-Version
+    value: 2.0.0
+    required: true
+    note: Selects Rest.li protocol 2.0 URL and encoding semantics.
+  - name: Content-Type
+    value: application/json
+    required: on write
+  - name: Content-Length
+    value: '0'
+    required: on POST with an empty body (otherwise 411 Length Required)
+versioning:
+  style: dated request header
+  artifact: lifecycle/linkedin-ads-lifecycle.yml
+idempotency:
+  supported: false
+  header: null
+  note: >-
+    LinkedIn documents no idempotency key, no request-replay protection and no
+    retry-safety guidance for write operations. The nearest thing is the
+    ENTITY_WITH_SAME_KEY_ALREADY_EXISTS validation error on a few resources,
+    which is a uniqueness constraint, not an idempotency contract. Duplicate
+    suppression exists only in the Conversions API, where it is a data-level
+    deduplication of conversion events (by event id / user identifiers), not an
+    HTTP idempotency mechanism.
+  conversions_deduplication_docs: https://learn.microsoft.com/en-us/linkedin/marketing/conversions/deduplication
+pagination:
+  default_style: offset
+  params:
+    - name: start
+      description: Index of the first item to return
+      default: 0
+    - name: count
+      description: Items per page
+      default: 10
+  response_fields:
+    - elements
+    - paging.start
+    - paging.count
+  end_of_dataset: fewer elements returned than the requested count
+  cursor_style:
+    supported: true
+    scope: Advertising (campaign management) collections
+    docs: https://learn.microsoft.com/en-us/linkedin/marketing/integrations/ads/cursor-based-pagination
+  docs: https://learn.microsoft.com/en-us/linkedin/shared/api-guide/concepts/pagination
+field_selection:
+  style: Rest.li field projections
+  param: fields
+  docs: https://learn.microsoft.com/en-us/linkedin/shared/api-guide/concepts/projections
+identifiers:
+  style: URN
+  format: 'urn:li:<entityType>:<id>'
+  examples:
+    - 'urn:li:sponsoredAccount:520866471'
+    - 'urn:li:organization:5622087'
+    - 'urn:li:versionedLeadGenForm:(urn:li:leadGenForm:6851219773716516864,1)'
+  docs: https://learn.microsoft.com/en-us/linkedin/shared/api-guide/concepts/urns
+  created_entity_id: returned in the x-restli-id response header on 201
+query_style:
+  finders: 'q=<finderName> (e.g. q=criteria, q=search)'
+  query_tunneling: >-
+    Long GET query strings may be tunneled as POST with
+    X-HTTP-Method-Override: GET and Content-Type:
+    application/x-www-form-urlencoded.
+  docs: https://learn.microsoft.com/en-us/linkedin/shared/api-guide/concepts/query-tunneling
+error_envelope:
+  shape: LinkedIn service error object (NOT RFC 9457 problem+json)
+  fields:
+    - message
+    - serviceErrorCode
+    - status
+    - code
+    - errorDetailType
+    - errorDetails
+  note: >-
+    The code/errorDetailType/errorDetails fields are the newer machine-readable
+    schema and are currently only returned for adAccounts, adCampaignGroups and
+    adCampaigns. Presence of `code` is how you tell you got the new shape.
+  guidance: Do not parse error messages; rely on HTTP status + code.
+  artifact: errors/linkedin-ads-error-codes.yml
+rate_limit_signaling:
+  headers: none
+  status: 429
+  artifact: rate-limits/linkedin-ads-rate-limits.yml
+request_tracing:
+  response_headers:
+    - x-li-uuid
+    - x-li-fabric
+    - x-li-request-id
+  note: >-
+    These are the identifiers LinkedIn asks you to capture and quote when
+    reporting a 500 to developer support.
+webhooks:
+  artifact: asyncapi/linkedin-ads-webhooks.yml
+x-evidence:
+  fetched: '2026-08-13'
+  checks:
+    - url: https://learn.microsoft.com/en-us/linkedin/shared/api-guide/concepts/pagination
+      http_status: 200
+    - url: https://learn.microsoft.com/en-us/linkedin/shared/api-guide/concepts/urns
+      http_status: 200
+    - url: https://learn.microsoft.com/en-us/linkedin/shared/api-guide/concepts/protocol-version
+      http_status: 200
+    - url: https://learn.microsoft.com/en-us/linkedin/marketing/error-responses
+      http_status: 200

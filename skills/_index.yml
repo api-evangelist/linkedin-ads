@@ -1,0 +1,33 @@
+generated: '2026-08-13'
+method: generated
+source: >-
+  openapi/ operations in this repository, grounded against the LinkedIn Marketing
+  API documentation on learn.microsoft.com
+note: >-
+  LinkedIn publishes no AGENTS.md and no skill files of its own; searched the
+  developer docs and the linkedin-developers GitHub organization first. Every
+  operationId referenced below exists verbatim in this repository's OpenAPI.
+skills:
+  - file: linkedin-ads-launch-a-campaign.md
+    name: Launch a LinkedIn ad campaign
+    api: openapi/linkedin-ads-adaccounts-api-openapi.yml
+    operations:
+      - createAdAccount
+      - getAdAccount
+      - createAdCampaignGroup
+      - createAdCampaign
+      - createCreative
+  - file: linkedin-ads-size-an-audience.md
+    name: Build and size a LinkedIn ad audience
+    api: openapi/linkedin-ads-adtargetingfacets-api-openapi.yml
+    operations:
+      - listAdTargetingFacets
+      - getAdTargetingEntities
+      - getAudienceCounts
+  - file: linkedin-ads-plan-budget-and-bids.md
+    name: Plan LinkedIn ad budget and bids
+    api: openapi/linkedin-ads-adbudgetpricing-api-openapi.yml
+    operations:
+      - getAdBudgetPricing
+      - getAudienceCounts
+      - createAdCampaign

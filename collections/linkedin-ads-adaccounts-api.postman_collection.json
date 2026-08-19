@@ -1,0 +1,742 @@
+{
+  "item": [
+    {
+      "id": "f8554e90-07e2-42fd-9272-f80bca276777",
+      "name": "AdAccounts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1801a716-cd76-47b5-837c-2c291f1be724",
+          "name": "Create an ad account",
+          "request": {
+            "name": "Create an ad account",
+            "description": {},
+            "url": {
+              "path": [
+                "adAccounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API version in `YYYYMM` format, e.g. `202605`.",
+                "key": "LinkedIn-Version",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "r_ads rw_ads r_ads_reporting r_basicprofile"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://www.linkedin.com/oauth/v2/accessToken"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://www.linkedin.com/oauth/v2/authorization"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currency\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"notifiedOnCampaignOptimization\": \"<boolean>\",\n  \"notifiedOnCreativeApproval\": \"<boolean>\",\n  \"notifiedOnCreativeRejection\": \"<boolean>\",\n  \"notifiedOnEndOfCampaign\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4c87d51c-b074-4fc6-8922-a69dd22a005f",
+              "name": "Ad account created. The created entity ID is returned in the `x-restli-id` response header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "adAccounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version in `YYYYMM` format, e.g. `202605`.",
+                    "key": "LinkedIn-Version",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"currency\": \"USD\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"notifiedOnCampaignOptimization\": \"<boolean>\",\n  \"notifiedOnCreativeApproval\": \"<boolean>\",\n  \"notifiedOnCreativeRejection\": \"<boolean>\",\n  \"notifiedOnEndOfCampaign\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "x-restli-id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e1df2391-c247-497f-8928-7d7eea3fa5a5",
+          "name": "Get an ad account",
+          "request": {
+            "name": "Get an ad account",
+            "description": {},
+            "url": {
+              "path": [
+                "adAccounts",
+                ":adAccountId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "adAccountId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API version in `YYYYMM` format, e.g. `202605`.",
+                "key": "LinkedIn-Version",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "r_ads rw_ads r_ads_reporting r_basicprofile"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://www.linkedin.com/oauth/v2/accessToken"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://www.linkedin.com/oauth/v2/authorization"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ffdfcd27-a6e6-4162-843f-59818972bcd9",
+              "name": "The requested ad account.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "adAccounts",
+                    ":adAccountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "adAccountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version in `YYYYMM` format, e.g. `202605`.",
+                    "key": "LinkedIn-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"currency\": \"USD\",\n  \"name\": \"string\",\n  \"type\": \"BUSINESS\",\n  \"reference\": \"string\",\n  \"notifiedOnCampaignOptimization\": true,\n  \"notifiedOnCreativeApproval\": false,\n  \"notifiedOnCreativeRejection\": true,\n  \"notifiedOnEndOfCampaign\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e6e8f44c-2578-4073-a3cc-8149ca6baaf6",
+          "name": "Create a campaign group",
+          "request": {
+            "name": "Create a campaign group",
+            "description": {},
+            "url": {
+              "path": [
+                "adAccounts",
+                ":adAccountId",
+                "adCampaignGroups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "adAccountId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API version in `YYYYMM` format, e.g. `202605`.",
+                "key": "LinkedIn-Version",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "r_ads rw_ads r_ads_reporting r_basicprofile"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://www.linkedin.com/oauth/v2/accessToken"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://www.linkedin.com/oauth/v2/authorization"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"account\": \"<string>\",\n  \"name\": \"<string>\",\n  \"runSchedule\": {\n    \"start\": \"<long>\",\n    \"end\": \"<long>\"\n  },\n  \"status\": \"<string>\",\n  \"totalBudget\": {\n    \"amount\": \"<string>\",\n    \"currencyCode\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "000e0d41-0d97-4cf6-be8c-4be3e64b67c2",
+              "name": "Campaign group created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "adAccounts",
+                    ":adAccountId",
+                    "adCampaignGroups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "adAccountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version in `YYYYMM` format, e.g. `202605`.",
+                    "key": "LinkedIn-Version",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"account\": \"<string>\",\n  \"name\": \"<string>\",\n  \"runSchedule\": {\n    \"start\": \"<long>\",\n    \"end\": \"<long>\"\n  },\n  \"status\": \"<string>\",\n  \"totalBudget\": {\n    \"amount\": \"string\",\n    \"currencyCode\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "x-restli-id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da28189b-2ccf-4c58-9e61-4a040743e5a5",
+          "name": "Create a campaign",
+          "request": {
+            "name": "Create a campaign",
+            "description": {},
+            "url": {
+              "path": [
+                "adAccounts",
+                ":adAccountId",
+                "adCampaigns"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "adAccountId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API version in `YYYYMM` format, e.g. `202605`.",
+                "key": "LinkedIn-Version",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "r_ads rw_ads r_ads_reporting r_basicprofile"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://www.linkedin.com/oauth/v2/accessToken"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://www.linkedin.com/oauth/v2/authorization"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"account\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"costType\": \"<string>\",\n  \"dailyBudget\": {\n    \"amount\": \"<string>\",\n    \"currencyCode\": \"<string>\"\n  },\n  \"unitCost\": {\n    \"amount\": \"<string>\",\n    \"currencyCode\": \"<string>\"\n  },\n  \"locale\": {\n    \"country\": \"<string>\",\n    \"language\": \"<string>\"\n  },\n  \"runSchedule\": {\n    \"start\": \"<long>\",\n    \"end\": \"<long>\"\n  },\n  \"targetingCriteria\": \"<object>\",\n  \"audienceExpansionEnabled\": \"<boolean>\",\n  \"creativeSelection\": \"<string>\",\n  \"offsiteDeliveryEnabled\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6b15ede6-2033-44a5-8ab8-b9ee5d2f4e25",
+              "name": "Campaign created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "adAccounts",
+                    ":adAccountId",
+                    "adCampaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "adAccountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version in `YYYYMM` format, e.g. `202605`.",
+                    "key": "LinkedIn-Version",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"account\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"costType\": \"<string>\",\n  \"dailyBudget\": {\n    \"amount\": \"string\",\n    \"currencyCode\": \"string\"\n  },\n  \"unitCost\": {\n    \"amount\": \"string\",\n    \"currencyCode\": \"string\"\n  },\n  \"locale\": {\n    \"country\": \"<string>\",\n    \"language\": \"<string>\"\n  },\n  \"runSchedule\": {\n    \"start\": \"<long>\",\n    \"end\": \"<long>\"\n  },\n  \"targetingCriteria\": \"<object>\",\n  \"audienceExpansionEnabled\": \"<boolean>\",\n  \"creativeSelection\": \"<string>\",\n  \"offsiteDeliveryEnabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "x-restli-id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e4d76c34-2609-4f5f-885c-d9193f645562",
+          "name": "Create an ad creative",
+          "request": {
+            "name": "Create an ad creative",
+            "description": {},
+            "url": {
+              "path": [
+                "adAccounts",
+                ":adAccountId",
+                "creatives"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "adAccountId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API version in `YYYYMM` format, e.g. `202605`.",
+                "key": "LinkedIn-Version",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "r_ads rw_ads r_ads_reporting r_basicprofile"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://www.linkedin.com/oauth/v2/accessToken"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://www.linkedin.com/oauth/v2/authorization"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"campaign\": \"<string>\",\n  \"status\": \"<string>\",\n  \"type\": \"<string>\",\n  \"variables\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7072355d-b4f3-476a-8674-683b6ed38cde",
+              "name": "Creative created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "adAccounts",
+                    ":adAccountId",
+                    "creatives"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "adAccountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version in `YYYYMM` format, e.g. `202605`.",
+                    "key": "LinkedIn-Version",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"campaign\": \"<string>\",\n  \"status\": \"<string>\",\n  \"type\": \"<string>\",\n  \"variables\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "x-restli-id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.linkedin.com/rest",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "r_ads rw_ads r_ads_reporting r_basicprofile"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://www.linkedin.com/oauth/v2/accessToken"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://www.linkedin.com/oauth/v2/authorization"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5ae147c8-ec29-434f-bf39-6ae30e52a98e",
+    "name": "LinkedIn Marketing AdAccounts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Partial OpenAPI 3.1 representation of the LinkedIn Marketing API for\nadvertising, campaign management, audience targeting, and reporting. Uses\nOAuth 2.0 three-legged (authorization code) flow and requires a\n`LinkedIn-Version` header in YYYYMM format on every versioned request.\nReference documentation lives at\nhttps://learn.microsoft.com/en-us/linkedin/marketing/.\n\n\nContact Support:\n Name: LinkedIn Marketing API Program",
+      "type": "text/plain"
+    }
+  }
+}

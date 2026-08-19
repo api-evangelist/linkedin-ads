@@ -1,0 +1,64 @@
+generated: '2026-08-13'
+method: searched
+source: https://learn.microsoft.com/en-us/linkedin/marketing/integrations/marketing-tiers
+summary: >-
+  The LinkedIn Marketing API Program has no priced plans. API access is not sold
+  — it is granted, in two access tiers (Development and Standard) that gate how
+  many Ad Accounts an application may write to, and both are applied for through
+  the Developer Portal at LinkedIn's discretion. What costs money is the
+  advertising itself, and that is auction-priced (CPC/CPM/CPS bidding) with no
+  published rate card. So this artifact records access tiers, not price tiers:
+  every "price" below is null because LinkedIn publishes none, not because it
+  was not checked.
+pricing_model: access-tier + advertising auction
+api_price: none
+plan_count: 2
+plans:
+  - name: Development
+    price: null
+    currency: null
+    billing_period: null
+    description: Build end-to-end workflows before obtaining full permissions.
+    included:
+      read: No limit on reading data for Ad Accounts the app administers
+      create: 1 test Ad Account via the API; real Ad Accounts must be created in Campaign Manager
+      edit: Updates for up to 5 Ad Accounts the app administers
+    how_to_get: Apply for the Advertising API on the app's Products tab in the Developer Portal
+  - name: Standard
+    price: null
+    currency: null
+    billing_period: null
+    description: Support campaign management for multiple accounts; designed for heavy ad demand.
+    included:
+      read: No limit on reading data for Ad Accounts the app administers
+      create: Unlimited Ad Accounts
+      edit: Unlimited updates for Ad Accounts the app administers
+    how_to_get: >-
+      Request via the "View Ad Accounts" setting for the Advertising API under
+      Added products in the Developer Portal, after building and testing on the
+      Development tier
+gating:
+  discretionary: true
+  note: >-
+    LinkedIn reserves the right to review applications and select partners at
+    its discretion; an application may not be upgraded even if it meets the
+    stated minimum requirements. Lead Sync, Conversions and Community Management
+    are separately-approved programs — Advertising API access does not grant
+    them.
+  terms: https://legal.linkedin.com/api-terms-of-use
+advertising_pricing:
+  model: auction
+  url: https://business.linkedin.com/marketing-solutions/ads/pricing
+  published_rate_card: false
+  note: >-
+    Ad cost is set by auction across CPC, CPM and cost-per-send formats; LinkedIn
+    publishes guidance and a budget minimum rather than fixed prices.
+x-evidence:
+  fetched: '2026-08-13'
+  checks:
+    - url: https://learn.microsoft.com/en-us/linkedin/marketing/integrations/marketing-tiers
+      http_status: 200
+    - url: https://business.linkedin.com/marketing-solutions/ads/pricing
+      http_status: 200
+    - url: https://legal.linkedin.com/api-terms-of-use
+      http_status: 200

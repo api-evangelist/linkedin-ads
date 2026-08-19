@@ -1,0 +1,203 @@
+{
+  "item": [
+    {
+      "id": "8fb2a3f4-6f79-4edc-abea-4aa28a5a83cb",
+      "name": "AdBudgetPricing",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d7e44541-b3a8-474c-ba59-b6bc67873fc8",
+          "name": "Get ad budget pricing",
+          "request": {
+            "name": "Get ad budget pricing",
+            "description": {},
+            "url": {
+              "path": [
+                "adBudgetPricing"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "bidType",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "campaignType",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "matchType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API version in `YYYYMM` format, e.g. `202605`.",
+                "key": "LinkedIn-Version",
+                "value": "<string>"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "r_ads rw_ads r_ads_reporting r_basicprofile"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://www.linkedin.com/oauth/v2/accessToken"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://www.linkedin.com/oauth/v2/authorization"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "024d8c96-8fa8-4841-aefa-a5552dcfdda3",
+              "name": "Pricing metrics including suggested, min, and max bids.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "adBudgetPricing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "bidType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "campaignType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "matchType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API version in `YYYYMM` format, e.g. `202605`.",
+                    "key": "LinkedIn-Version",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.linkedin.com/rest",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "r_ads rw_ads r_ads_reporting r_basicprofile"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://www.linkedin.com/oauth/v2/accessToken"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://www.linkedin.com/oauth/v2/authorization"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8bd7961f-13e4-4182-b0e2-2b28d8322ee1",
+    "name": "LinkedIn Marketing AdAccounts AdBudgetPricing API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Partial OpenAPI 3.1 representation of the LinkedIn Marketing API for\nadvertising, campaign management, audience targeting, and reporting. Uses\nOAuth 2.0 three-legged (authorization code) flow and requires a\n`LinkedIn-Version` header in YYYYMM format on every versioned request.\nReference documentation lives at\nhttps://learn.microsoft.com/en-us/linkedin/marketing/.\n\n\nContact Support:\n Name: LinkedIn Marketing API Program",
+      "type": "text/plain"
+    }
+  }
+}

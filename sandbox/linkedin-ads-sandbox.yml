@@ -1,0 +1,69 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://learn.microsoft.com/en-us/linkedin/marketing/integrations/ads/account-structure/create-and-manage-accounts
+summary: >-
+  There is no separate sandbox host, no test-mode key prefix and no simulated
+  clock. LinkedIn is explicit that "all API Calls at all access levels are made
+  on production data". The only isolation LinkedIn offers is a test Ad Account —
+  a production ad account created with test:true, which never spends money —
+  plus a Campaign Manager tool for sending a test lead through Lead Sync.
+separation:
+  model: test flag on a production entity
+  hosts:
+    live: https://api.linkedin.com/rest
+    sandbox: null
+  key_prefixes: null
+  note: All access tiers operate against production data.
+test_account:
+  resource: /rest/adAccounts
+  field: test
+  type: boolean
+  default: false
+  immutable: true
+  set_at: creation only
+  limit_per_app: 1
+  restrictions:
+    - test cannot be true when type is ENTERPRISE (CONDITIONAL_INVALID_VALUE)
+    - an existing account cannot be converted to a test account (FIELD_NOT_EDITABLE)
+    - segment/audience creation is not supported for test accounts (SEGMENT_CREATION_NOT_ALLOWED_FOR_TEST_ACCOUNTS)
+  errors_on_abuse:
+    - TEST_ACCOUNT_LIMIT_REACHED
+    - BATCH_CREATE_TEST_ACCOUNT_LIMIT_REACHED
+  access_tier_note: >-
+    In the Development tier the API may create exactly this one test Ad Account;
+    all real Ad Accounts must be created through the Campaign Manager UI.
+  docs: >-
+    https://learn.microsoft.com/en-us/linkedin/marketing/integrations/ads/account-structure/create-and-manage-accounts
+test_leads:
+  tool: Campaign Manager "Send a test lead"
+  note: >-
+    Generates a test Lead Form response so a Lead Sync integration can be
+    exercised end to end, including a registered lead-notification webhook.
+  docs: https://learn.microsoft.com/en-us/linkedin/marketing/lead-sync/leadsync
+token_tooling:
+  developer_portal_token_generator: https://www.linkedin.com/developers/tools/oauth
+  postman_workspace: >-
+    https://www.postman.com/linkedin-developer-apis/workspace/linkedin-marketing-solutions-versioned-apis/overview
+  note: >-
+    LinkedIn ships a public Postman workspace with per-product collections and
+    matching environments (e.g. campaign-management-env), pre-wired for the
+    3-legged OAuth flow with the Postman callback URLs.
+  docs: https://learn.microsoft.com/en-us/linkedin/marketing/authentication/lms-generate-an-access-token
+not_provided:
+  - test API host
+  - test/live key prefixes
+  - test clocks or time simulation
+  - fixture or event-trigger tooling
+  - magic test identifiers
+x-evidence:
+  fetched: '2026-08-13'
+  checks:
+    - url: >-
+        https://learn.microsoft.com/en-us/linkedin/marketing/integrations/ads/account-structure/create-and-manage-accounts
+      http_status: 200
+    - url: https://learn.microsoft.com/en-us/linkedin/marketing/integrations/marketing-tiers
+      http_status: 200
+    - url: >-
+        https://www.postman.com/linkedin-developer-apis/workspace/linkedin-marketing-solutions-versioned-apis/overview
+      http_status: 200

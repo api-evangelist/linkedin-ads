@@ -1,36 +1,97 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/linkedin-ads-openapi.yml
+generated: '2026-08-13'
+method: searched
+source: openapi/_original/linkedin-ads-openapi.yml
+docs: https://learn.microsoft.com/en-us/linkedin/marketing/getting-started
+note: >-
+  LinkedIn publishes no single canonical scope reference page. Scopes are granted
+  per product and are shown on the Auth tab of your own app in the Developer
+  Portal, so the authoritative list is per-application. The scopes below are only
+  those evidenced either by the repository OpenAPI or by a named LinkedIn
+  documentation page; there are more scopes across Lead Sync, Conversions,
+  Community Management, Events and Company Intelligence that LinkedIn discloses
+  only to approved partners. A member must consent to the whole requested set —
+  individual scopes cannot be selected — and changing an app's scopes forces
+  re-authentication.
 schemes:
-- name: OAuth2
-  source: openapi/linkedin-ads-openapi.yml
-  flows:
-  - flow: authorizationCode
-    authorizationUrl: https://www.linkedin.com/oauth/v2/authorization
-    tokenUrl: https://www.linkedin.com/oauth/v2/accessToken
-  description: OAuth 2.0 three-legged (authorization code) flow.
+  - name: OAuth2
+    source: openapi/linkedin-ads-openapi.yml
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://www.linkedin.com/oauth/v2/authorization
+        tokenUrl: https://www.linkedin.com/oauth/v2/accessToken
+    description: OAuth 2.0 three-legged (authorization code) flow.
+  - name: OpenIDConnect
+    source: well-known/linkedin-ads-openid-configuration.json
+    description: Sign In with LinkedIn using OpenID Connect.
 scopes:
-- scope: r_ads
-  description: Read ads accounts, campaigns, and creatives.
-  flows:
-  - authorizationCode
-  sources:
-  - openapi/linkedin-ads-openapi.yml
-- scope: r_ads_reporting
-  description: Read ad campaign reporting data.
-  flows:
-  - authorizationCode
-  sources:
-  - openapi/linkedin-ads-openapi.yml
-- scope: r_basicprofile
-  description: Read basic profile.
-  flows:
-  - authorizationCode
-  sources:
-  - openapi/linkedin-ads-openapi.yml
-- scope: rw_ads
-  description: Read and write ads accounts, campaigns, and creatives.
-  flows:
-  - authorizationCode
-  sources:
-  - openapi/linkedin-ads-openapi.yml
+  - scope: r_ads
+    description: Read ad accounts, campaign groups, campaigns and creatives.
+    flows: [authorizationCode]
+    sources: [openapi/linkedin-ads-openapi.yml]
+  - scope: rw_ads
+    description: Read and write ad accounts, campaign groups, campaigns and creatives.
+    flows: [authorizationCode]
+    sources:
+      - openapi/linkedin-ads-openapi.yml
+      - https://learn.microsoft.com/en-us/linkedin/marketing/authentication/lms-generate-an-access-token
+  - scope: r_ads_reporting
+    description: Read ad campaign reporting and analytics data.
+    flows: [authorizationCode]
+    sources: [openapi/linkedin-ads-openapi.yml]
+  - scope: r_basicprofile
+    description: Read the authenticated member's basic profile.
+    flows: [authorizationCode]
+    sources:
+      - openapi/linkedin-ads-openapi.yml
+      - https://learn.microsoft.com/en-us/linkedin/marketing/authentication/lms-generate-an-access-token
+  - scope: rw_organization_admin
+    description: Manage the organization (Page) an application administers.
+    flows: [authorizationCode]
+    sources: [https://learn.microsoft.com/en-us/linkedin/marketing/authentication/lms-generate-an-access-token]
+  - scope: w_organization_social
+    description: Post, comment and react on behalf of an organization Page.
+    flows: [authorizationCode]
+    sources: [https://learn.microsoft.com/en-us/linkedin/marketing/authentication/lms-generate-an-access-token]
+  - scope: w_member_social
+    description: Post, comment and react on behalf of the authenticated member.
+    flows: [authorizationCode]
+    sources: [https://learn.microsoft.com/en-us/linkedin/marketing/authentication/lms-generate-an-access-token]
+  - scope: rw_events
+    description: Create and manage LinkedIn Events for the Event Management API.
+    flows: [authorizationCode]
+    sources: [https://learn.microsoft.com/en-us/linkedin/marketing/integrations/recent-changes]
+  - scope: r_events
+    description: Read LinkedIn Events.
+    flows: [authorizationCode]
+    sources: [https://learn.microsoft.com/en-us/linkedin/marketing/integrations/recent-changes]
+  - scope: r_marketing_leadgen_automation
+    description: Read Lead Gen Form responses and manage lead notification subscriptions.
+    flows: [authorizationCode]
+    sources: [https://learn.microsoft.com/en-us/linkedin/marketing/lead-sync/leadsync]
+  - scope: openid
+    description: OpenID Connect sign-in; returns an RS256 id_token.
+    flows: [authorizationCode]
+    sources: [well-known/linkedin-ads-openid-configuration.json]
+  - scope: profile
+    description: OpenID Connect profile claims (name, given_name, family_name, picture, locale).
+    flows: [authorizationCode]
+    sources: [well-known/linkedin-ads-openid-configuration.json]
+  - scope: email
+    description: OpenID Connect email and email_verified claims.
+    flows: [authorizationCode]
+    sources: [well-known/linkedin-ads-openid-configuration.json]
+consent:
+  granularity: all-or-nothing per authorization request
+  re_auth_on_scope_change: true
+  guidance: Request the least number of scopes your integration needs.
+  docs: https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow
+x-evidence:
+  fetched: '2026-08-13'
+  checks:
+    - url: https://learn.microsoft.com/en-us/linkedin/marketing/authentication/lms-generate-an-access-token
+      http_status: 200
+    - url: https://www.linkedin.com/oauth/.well-known/openid-configuration
+      http_status: 200
+    - url: https://learn.microsoft.com/en-us/linkedin/shared/authentication/permissions
+      http_status: 404
+      note: No canonical permissions/scopes reference page is published at the expected path.

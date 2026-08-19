@@ -1,0 +1,81 @@
+generated: '2026-08-13'
+method: searched
+source: live probes of the LinkedIn API, member and developer hosts
+note: >-
+  Probed the /.well-known/ surface on every host in apis.yml and every OpenAPI
+  servers[] host. The API host itself (api.linkedin.com) serves nothing at
+  /.well-known/ — every path returns the LinkedIn 404 HTML page. Two real
+  documents are served from the member host www.linkedin.com: an RFC 9116
+  security.txt pointing at LinkedIn's HackerOne program, and an OpenID Connect
+  discovery document served from the /oauth path prefix (NOT the host root).
+hosts:
+  - host: https://api.linkedin.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://www.linkedin.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        content_type: text/plain
+        file: linkedin-ads-security.txt
+        spec: RFC 9116
+      - path: /oauth/.well-known/openid-configuration
+        status: 200
+        content_type: application/json
+        file: linkedin-ads-openid-configuration.json
+        spec: OpenID Connect Discovery 1.0
+        note: >-
+          Served under the /oauth path prefix, not the host root; the root
+          /.well-known/openid-configuration returns 404.
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://developer.linkedin.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+oidc:
+  issuer: https://www.linkedin.com/oauth
+  authorization_endpoint: https://www.linkedin.com/oauth/v2/authorization
+  token_endpoint: https://www.linkedin.com/oauth/v2/accessToken
+  userinfo_endpoint: https://api.linkedin.com/v2/userinfo
+  jwks_uri: https://www.linkedin.com/oauth/openid/jwks
+  scopes_supported: [openid, profile, email]
+  id_token_signing_alg_values_supported: [RS256]
+x-evidence:
+  fetched: '2026-08-13'
+  checks:
+    - url: https://www.linkedin.com/.well-known/security.txt
+      http_status: 200
+    - url: https://www.linkedin.com/oauth/.well-known/openid-configuration
+      http_status: 200
+    - url: https://api.linkedin.com/.well-known/security.txt
+      http_status: 404
+    - url: https://api.linkedin.com/.well-known/api-catalog
+      http_status: 404

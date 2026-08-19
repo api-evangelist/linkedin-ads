@@ -1,0 +1,57 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "LinkedIn Marketing AdAccounts AdTargetingFacets API",
+    "version": "2026.05"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://www.linkedin.com/oauth/v2/authorization",
+      "accessTokenUrl": "https://www.linkedin.com/oauth/v2/accessToken",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "AdTargetingFacets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List ad targeting facets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.linkedin.com/rest/adTargetingFacets",
+            "headers": [
+              {
+                "name": "LinkedIn-Version",
+                "value": ""
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://www.linkedin.com/oauth/v2/authorization",
+              "accessTokenUrl": "https://www.linkedin.com/oauth/v2/accessToken",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List ad targeting facets"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

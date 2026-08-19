@@ -1,0 +1,72 @@
+generated: '2026-08-13'
+method: derived
+status: candidate
+source: openapi/ operations in this repository
+summary: >-
+  LinkedIn ships no MCP server for the Marketing API. Searched the LinkedIn
+  developer docs, the github.com/linkedin-developers organization and the
+  official MCP registry: the only LinkedIn entry in the registry is
+  ai.com.mcp/linkedin, a third-party HAPI MCP wrapper published by la-rebelion
+  that fronts three LinkedIn operations — it is not LinkedIn's, so it is
+  recorded here as third-party context and NOT as a LinkedIn agent surface. The
+  tools below are an API Evangelist candidate derivation from this repository's
+  OpenAPI operations, not something an agent can call today. No MCPServer
+  pointer is wired into apis.yml, because there is no server.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: searched
+server: null
+tools:
+  - name: create_ad_account
+    description: Create an ad account.
+    source_operation: openapi/linkedin-ads-adaccounts-api-openapi.yml#createAdAccount
+  - name: get_ad_account
+    description: Get an ad account by id.
+    source_operation: openapi/linkedin-ads-adaccounts-api-openapi.yml#getAdAccount
+  - name: create_ad_campaign_group
+    description: Create a campaign group under an ad account.
+    source_operation: openapi/linkedin-ads-adaccounts-api-openapi.yml#createAdCampaignGroup
+  - name: create_ad_campaign
+    description: Create a campaign under an ad account.
+    source_operation: openapi/linkedin-ads-adaccounts-api-openapi.yml#createAdCampaign
+  - name: create_creative
+    description: Create a creative under a campaign.
+    source_operation: openapi/linkedin-ads-adaccounts-api-openapi.yml#createCreative
+  - name: list_ad_targeting_facets
+    description: List the available ad targeting facets.
+    source_operation: openapi/linkedin-ads-adtargetingfacets-api-openapi.yml#listAdTargetingFacets
+  - name: get_ad_targeting_entities
+    description: Look up targeting entities within a facet.
+    source_operation: openapi/linkedin-ads-adtargetingentities-api-openapi.yml#getAdTargetingEntities
+  - name: get_audience_counts
+    description: Get the audience size for a set of targeting criteria.
+    source_operation: openapi/linkedin-ads-audiencecounts-api-openapi.yml#getAudienceCounts
+  - name: get_ad_budget_pricing
+    description: Get suggested bid and budget bounds for targeting criteria.
+    source_operation: openapi/linkedin-ads-adbudgetpricing-api-openapi.yml#getAdBudgetPricing
+third_party:
+  - name: ai.com.mcp/linkedin
+    title: LinkedIn MCP Server (HAPI MCP)
+    publisher: la-rebelion
+    official: false
+    remote: https://linkedin.run.mcp.com.ai/mcp
+    transport: streamable-http
+    repository: https://github.com/la-rebelion/hapimcp
+    tools: [createSharePost, getSharePosts, getPersonProfile]
+    note: >-
+      Wraps member/share operations, not the Marketing API advertising surface.
+      Listed for context only; not evidence of a LinkedIn agent surface.
+    source: https://registry.modelcontextprotocol.io/v0/servers?search=linkedin
+x-evidence:
+  fetched: '2026-08-13'
+  checks:
+    - url: https://api.github.com/search/repositories?q=org:linkedin-developers+mcp
+      http_status: 200
+      result: 0 repositories
+    - url: https://registry.modelcontextprotocol.io/v0/servers?search=linkedin
+      http_status: 200
+      result: one third-party server, no first-party LinkedIn server

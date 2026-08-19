@@ -1,0 +1,74 @@
+generated: '2026-08-13'
+method: searched
+source: https://learn.microsoft.com/en-us/linkedin/marketing/lead-sync/leadsync
+spec_type: none
+asyncapi_published: false
+note: >-
+  LinkedIn publishes no AsyncAPI document and no event-catalog page for the
+  Marketing API. It does operate one real push surface — Lead Sync lead
+  notifications — where the subscription itself is a REST resource
+  (/rest/leadNotifications) and LinkedIn POSTs new-lead notifications to a URL
+  you register. The Developer Portal also exposes a per-app Webhooks tab for
+  registering endpoints for subscribed events. Everything else in the Marketing
+  API (reporting, campaign state, social actions) is poll-only.
+surface: webhooks
+webhooks:
+  - name: lead-notifications
+    product: Lead Sync
+    subscription_resource: https://api.linkedin.com/rest/leadNotifications
+    subscription_scopes:
+      - level: owner
+        keys: [owner.sponsoredAccount, owner.organization]
+      - level: associated-entity
+        keys: [owner, associatedEntity.event]
+      - level: form
+        keys: [owner, versionedForm]
+    lead_types: [SPONSORED]
+    delivery:
+      method: POST
+      transport: HTTPS only
+      endpoint_requirements: >-
+        The registered URL must be publicly reachable and accept POST bodies
+        with no additional requirements such as authorization tokens.
+      validation_required: true
+      validation_note: >-
+        Since 16 March 2026, new lead notifications are pushed only to webhooks
+        that have been validated.
+      signature: none documented
+      retry_policy: not documented
+    limits:
+      max_subscriptions: 1500
+      scope: per owner
+    subscription_fields: [owner, webhook, id, leadType, versionedForm, associatedEntity]
+    docs: https://learn.microsoft.com/en-us/linkedin/marketing/lead-sync/leadsync
+    schema_docs: https://learn.microsoft.com/en-us/linkedin/marketing/lead-sync/lead-sync-schema
+  - name: developer-portal-webhooks
+    product: platform
+    subscription_resource: https://www.linkedin.com/developers/apps
+    delivery:
+      method: POST
+      transport: HTTPS
+    note: >-
+      The app's Webhooks tab in the Developer Portal registers an endpoint for
+      real-time HTTP notifications on subscribed events; the event catalogue is
+      product-specific and gated behind the product approvals on the app.
+    docs: https://learn.microsoft.com/en-us/linkedin/marketing/quick-start
+polling_surfaces:
+  - name: leadFormResponses
+    note: Fetch submitted Lead Form responses (the pull counterpart to lead notifications).
+  - name: organization social action notifications
+    note: >-
+      Brand-mention and social-action monitoring for Pages is a polled REST
+      collection, not a push feed.
+    docs: >-
+      https://learn.microsoft.com/en-us/linkedin/marketing/community-management/organizations/organization-social-action-notifications
+x-evidence:
+  fetched: '2026-08-13'
+  checks:
+    - url: https://learn.microsoft.com/en-us/linkedin/marketing/lead-sync/leadsync
+      http_status: 200
+    - url: https://learn.microsoft.com/en-us/linkedin/marketing/lead-sync/leadsync-overview
+      http_status: 200
+    - url: https://api.linkedin.com/rest/openapi.json
+      http_status: 401
+      note: API host requires OAuth; no anonymous machine-readable event contract is served.

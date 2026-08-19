@@ -1,18 +1,63 @@
-generated: '2026-07-11'
+generated: '2026-08-13'
 method: probed
 source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+note: >-
+  The mechanical probe only reached learn.microsoft.com (the documentation host
+  named in apis.yml). The LinkedIn hosts that actually matter — the API host and
+  the developer/member hosts — were probed by hand on the same day and are
+  recorded below with the same fields.
 hosts:
-- host: learn.microsoft.com
-  https: true
-  tls_version: TLSv1.3
-  cert_expires: Dec 11 02:26:09 2026 GMT
-  hsts: true
-  hsts_max_age: 31536000
+  - host: api.linkedin.com
+    https: true
+    tls_version: TLSv1.3
+    cert_expires: Nov 13 23:59:59 2026 GMT
+    hsts: true
+    hsts_max_age: 31536000
+  - host: www.linkedin.com
+    https: true
+    tls_version: TLSv1.3
+    cert_expires: Sep 19 23:59:59 2026 GMT
+    hsts: true
+    hsts_max_age: 31536000
+  - host: business.linkedin.com
+    https: true
+    tls_version: TLSv1.3
+    cert_expires: Sep 19 23:59:59 2026 GMT
+    hsts: true
+    hsts_max_age: 31536000
+  - host: developer.linkedin.com
+    https: true
+    tls_version: TLSv1.3
+    cert_expires: Sep 19 23:59:59 2026 GMT
+    hsts: true
+    hsts_max_age: 31536000
+  - host: learn.microsoft.com
+    https: true
+    tls_version: TLSv1.3
+    cert_expires: Dec 11 02:26:09 2026 GMT
+    hsts: true
+    hsts_max_age: 31536000
 domains:
-- domain: microsoft.com
-  dnssec: false
-  caa:
-  - 0 contactemail "caarecordaware@microsoft.com"
-  spf: true
-  dmarc: true
-  dmarc_policy: reject
+  - domain: linkedin.com
+    dnssec: false
+    caa:
+      - 0 contactemail "caarecordaware@microsoft.com"
+      - 0 contactemail "tls-alerts@linkedin.com"
+    caa_issue_restriction: false
+    spf: true
+    dmarc: true
+    dmarc_policy: reject
+    note: >-
+      CAA records are present but carry only contactemail properties — there is
+      no issue/issuewild restriction, so CAA is not constraining which CAs may
+      issue for linkedin.com.
+  - domain: microsoft.com
+    dnssec: false
+    caa:
+      - 0 contactemail "caarecordaware@microsoft.com"
+    spf: true
+    dmarc: true
+    dmarc_policy: reject
+x-evidence:
+  fetched: '2026-08-13'
+  method_detail: openssl s_client per host, curl -I for HSTS, dig for DNSKEY/CAA/TXT/_dmarc

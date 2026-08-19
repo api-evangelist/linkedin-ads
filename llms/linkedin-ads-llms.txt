@@ -1,0 +1,87 @@
+# LinkedIn Marketing API
+
+> The LinkedIn Marketing API Program is a versioned REST surface at
+> https://api.linkedin.com/rest for building and reporting on LinkedIn
+> advertising: ad accounts, campaign groups, campaigns, creatives, audience
+> targeting and sizing, budget/bid pricing, conversions, lead sync, matched
+> audiences, media planning, community management and company intelligence.
+> Authentication is OAuth 2.0 three-legged (authorization code). Every call must
+> carry a dated version header (`Linkedin-Version: YYYYMM`, currently 202607) and
+> `X-Restli-Protocol-Version: 2.0.0`. LinkedIn publishes no OpenAPI, no AsyncAPI,
+> no GraphQL schema and no MCP server; the machine-readable artifacts here are
+> API Evangelist derivations from the published documentation.
+
+## Reading this
+
+- Base URL: https://api.linkedin.com/rest
+- Versions live a minimum of 12 months and then sunset; a call with a sunset version fails with HTTP 426.
+- Access is granted, not purchased: Development and Standard access tiers, applied for in the Developer Portal.
+- There is no idempotency key. Retrying a POST creates a second entity.
+- There are no rate-limit response headers. You learn your quota from the Developer Portal Analytics tab, and you learn you exceeded it from a 429.
+
+## APIs
+
+- [LinkedIn Marketing API](https://learn.microsoft.com/en-us/linkedin/marketing/): campaign management, reporting, lead sync, matched audiences, conversions, media planning, community management
+- [Advertising API overview](https://learn.microsoft.com/en-us/linkedin/marketing/integrations/ads/ads-overview)
+- [Reporting and analytics](https://learn.microsoft.com/en-us/linkedin/marketing/integrations/ads-reporting/getting-started)
+- [Lead Sync](https://learn.microsoft.com/en-us/linkedin/marketing/lead-sync/leadsync-overview)
+- [Matched Audiences](https://learn.microsoft.com/en-us/linkedin/marketing/matched-audiences/matched-audiences)
+- [Conversions API](https://learn.microsoft.com/en-us/linkedin/marketing/conversions/conversions-overview)
+- [Media Planning](https://learn.microsoft.com/en-us/linkedin/marketing/media-planning/media-planning-overview)
+- [Community Management](https://learn.microsoft.com/en-us/linkedin/marketing/community-management/community-management-overview)
+- [Company Intelligence](https://learn.microsoft.com/en-us/linkedin/marketing/account-intel/company-intelligence-overview)
+
+## Getting started
+
+- [Quick start](https://learn.microsoft.com/en-us/linkedin/marketing/quick-start)
+- [Developer portal](https://developer.linkedin.com/product-catalog/marketing)
+- [Create an app](https://www.linkedin.com/developers/apps/new)
+- [Access tiers](https://learn.microsoft.com/en-us/linkedin/marketing/integrations/marketing-tiers)
+- [Public Postman workspace](https://www.postman.com/linkedin-developer-apis/workspace/linkedin-marketing-solutions-versioned-apis/overview)
+
+## Conventions
+
+- [Authentication (3-legged OAuth)](https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow)
+- [Versioning](https://learn.microsoft.com/en-us/linkedin/marketing/versioning)
+- [Migrations and sunset dates](https://learn.microsoft.com/en-us/linkedin/marketing/integrations/migrations)
+- [Pagination](https://learn.microsoft.com/en-us/linkedin/shared/api-guide/concepts/pagination)
+- [URNs and IDs](https://learn.microsoft.com/en-us/linkedin/shared/api-guide/concepts/urns)
+- [Field projections](https://learn.microsoft.com/en-us/linkedin/shared/api-guide/concepts/projections)
+- [Rate limiting](https://learn.microsoft.com/en-us/linkedin/shared/api-guide/concepts/rate-limits)
+- [Error handling](https://learn.microsoft.com/en-us/linkedin/shared/api-guide/concepts/error-handling)
+- [Marketing error codes](https://learn.microsoft.com/en-us/linkedin/marketing/error-responses)
+- [Breaking change policy](https://learn.microsoft.com/en-us/linkedin/shared/breaking-change-policy)
+- [Recent changes](https://learn.microsoft.com/en-us/linkedin/marketing/integrations/recent-changes)
+
+## SDKs
+
+- [linkedin-api-client (JavaScript/TypeScript)](https://www.npmjs.com/package/linkedin-api-client) — official, 0.3.0, last released 2023-02-07
+- [linkedin-api-client (Python)](https://pypi.org/project/linkedin-api-client/) — official, 0.3.0, last released 2023-06-29
+- [linkedin-developers on GitHub](https://github.com/linkedin-developers)
+
+## Artifacts (API Evangelist)
+
+- OpenAPI (partial, API Evangelist authored): openapi/
+- Authentication: authentication/linkedin-ads-authentication.yml
+- OAuth scopes: scopes/linkedin-ads-scopes.yml
+- Conventions: conventions/linkedin-ads-conventions.yml
+- Error codes: errors/linkedin-ads-error-codes.yml
+- Lifecycle and versioning: lifecycle/linkedin-ads-lifecycle.yml
+- Changelog: changelog/linkedin-ads-changelog.yml
+- Rate limits: rate-limits/linkedin-ads-rate-limits.yml
+- Access tiers: plans/linkedin-ads-plans-pricing.yml
+- Sandbox and test accounts: sandbox/linkedin-ads-sandbox.yml
+- Webhooks (Lead Sync): asyncapi/linkedin-ads-webhooks.yml
+- Data model: data-model/linkedin-ads-data-model.yml
+- Packages: packages/linkedin-ads-packages.yml
+- Well-known documents: well-known/linkedin-ads-well-known.yml
+- Conformance: conformance/linkedin-ads-conformance.yml
+- Agent skills: skills/_index.yml
+
+## Operations
+
+- Status: https://www.linkedin-apistatus.com
+- Support: https://developer.linkedin.com/support
+- Security disclosure: https://hackerone.com/linkedin
+- API terms of use: https://legal.linkedin.com/api-terms-of-use
+- Privacy policy: https://www.linkedin.com/legal/privacy-policy

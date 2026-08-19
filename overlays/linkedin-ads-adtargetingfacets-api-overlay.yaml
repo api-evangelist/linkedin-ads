@@ -1,0 +1,45 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for LinkedIn Marketing AdAccounts AdTargetingFacets API
+  version: 1.0.0
+extends: openapi/linkedin-ads-adtargetingfacets-api-openapi.yml
+x-generated: '2026-08-13'
+x-method: generated
+x-source: apis.yml + learn.microsoft.com LinkedIn Marketing API documentation
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: linkedin-ads
+    x-apievangelist-docs: https://learn.microsoft.com/en-us/linkedin/marketing/
+    x-apievangelist-spec-provenance: LinkedIn publishes no OpenAPI; this document is an API Evangelist
+      partial representation of the documented endpoints.
+- target: $.info
+  update:
+    x-api-lifecycle:
+      versioning: dated request header Linkedin-Version (YYYYMM)
+      current: '202607'
+      cadence: monthly
+      support_window: minimum 12 months
+      sunset_signal: HTTP 426 on a sunset version header
+      artifact: lifecycle/linkedin-ads-lifecycle.yml
+- target: $.info
+  update:
+    x-api-conventions:
+      protocol: 'Rest.li 2.0 (X-Restli-Protocol-Version: 2.0.0)'
+      identifiers: urn:li:<entityType>:<id>
+      pagination: start/count with a paging object; cursor pagination on advertising collections
+      idempotency: none documented
+      rate_limit_headers: none
+      artifact: conventions/linkedin-ads-conventions.yml
+- target: $.info
+  update:
+    x-api-errors:
+      envelope: message, serviceErrorCode, status, code, errorDetailType, errorDetails
+      rfc9457: false
+      registry: errors/linkedin-ads-error-codes.yml
+      docs: https://learn.microsoft.com/en-us/linkedin/marketing/error-responses
+- target: $.paths.*.*
+  update:
+    x-required-headers:
+    - Linkedin-Version
+    - X-Restli-Protocol-Version

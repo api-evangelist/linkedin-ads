@@ -1,0 +1,75 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  registry.npmjs.org, pypi.org, api.github.com/orgs/linkedin-developers, and the
+  LinkedIn Marketing API docs on learn.microsoft.com
+note: >-
+  LinkedIn publishes two first-party API client libraries under the
+  github.com/linkedin-developers organization — a TypeScript/JavaScript client
+  and a Python client. Both are generic LinkedIn REST clients (Rest.li protocol
+  2.0, Linkedin-Version header, 3-legged OAuth) rather than Marketing-specific
+  SDKs. CURRENCY FINDING: both stopped at 0.3.0 in 2023 while the Marketing API
+  itself ships a new dated version every month (202607 is current) and sunsets
+  each version after twelve. No first-party Java, Go, Ruby, PHP, .NET or Rust
+  client is published; the Java surface is a sample application, not a library.
+packages:
+  - language: javascript
+    registry: npm
+    name: linkedin-api-client
+    url: https://www.npmjs.com/package/linkedin-api-client
+    install: npm install linkedin-api-client
+    repo: https://github.com/linkedin-developers/linkedin-api-js-client
+    official: true
+    version: 0.3.0
+    published: '2023-02-07'
+  - language: python
+    registry: pypi
+    name: linkedin-api-client
+    url: https://pypi.org/project/linkedin-api-client/
+    install: pip install linkedin-api-client
+    repo: https://github.com/linkedin-developers/linkedin-api-python-client
+    official: true
+    version: 0.3.0
+    published: '2023-06-29'
+  - language: java
+    registry: null
+    name: linkedin-developers/java-sample-application
+    url: https://github.com/linkedin-developers/java-sample-application
+    install: null
+    repo: https://github.com/linkedin-developers/java-sample-application
+    official: true
+    kind: sample-application
+    version: null
+    published: null
+    note: >-
+      Published by LinkedIn but distributed as a sample application repository
+      only — no Maven Central coordinates, no release tags, so there is no
+      registry metadata endpoint to read a version or date from. Checked, nothing
+      to record.
+registries_checked:
+  - registry: npm
+    result: linkedin-api-client found (official)
+  - registry: pypi
+    result: linkedin-api-client found (official)
+  - registry: maven-central
+    result: no first-party LinkedIn Marketing API artifact found
+  - registry: nuget
+    result: no first-party package found
+  - registry: pkg.go.dev
+    result: no first-party module found
+  - registry: rubygems
+    result: no first-party gem found
+  - registry: packagist
+    result: no first-party package found
+  - registry: crates.io
+    result: no first-party crate found
+official_sdk_count: 2
+x-evidence:
+  fetched: '2026-08-13'
+  checks:
+    - url: https://registry.npmjs.org/linkedin-api-client
+      http_status: 200
+    - url: https://pypi.org/pypi/linkedin-api-client/json
+      http_status: 200
+    - url: https://api.github.com/orgs/linkedin-developers/repos
+      http_status: 200

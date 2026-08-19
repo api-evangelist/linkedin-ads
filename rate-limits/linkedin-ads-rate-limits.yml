@@ -1,0 +1,76 @@
+generated: '2026-08-13'
+method: searched
+source: https://learn.microsoft.com/en-us/linkedin/shared/api-guide/concepts/rate-limits
+summary: >-
+  LinkedIn rate limits every Marketing API request on a rolling 24-hour window
+  that resets at midnight UTC, against two independent counters: application
+  (all calls the app makes) and member (calls made with one member's token).
+  The numbers themselves are deliberately NOT published — "Standard rate limits
+  are not published in documentation" — they vary per endpoint and per app, and
+  the only way to read yours is the Analytics tab of your app in the Developer
+  Portal, which shows an endpoint only after you have called it at least once
+  that UTC day. There are no RateLimit-* / X-RateLimit-* response headers and no
+  Retry-After: an agent gets no runtime budget signal at all, only a 429 after
+  the fact.
+limit_count: 0
+published_numeric_limits: false
+scopes:
+  - scope: application
+    window: 24h (resets midnight UTC)
+    limit: null
+    burst: null
+    note: Total calls the developer application may make per day, per endpoint.
+  - scope: member-per-application
+    window: 24h (resets midnight UTC)
+    limit: null
+    burst: null
+    note: >-
+      Total calls a single member's token may drive from one application per
+      day, per endpoint.
+headers:
+  request: []
+  response: []
+  note: >-
+    No rate-limit headers are documented or observed. LinkedIn publishes no
+    RateLimit-Limit/Remaining/Reset, no X-RateLimit-*, and no Retry-After on 429.
+exhaustion:
+  status: 429
+  message: Resource level throttle limit for calls to this resource is reached.
+  retry_after_header: false
+  note: >-
+    LinkedIn may also return 429 as infrastructure protection unrelated to your
+    quota; service returns to normal automatically.
+alerting:
+  channel: email to Developer Admins
+  threshold: 75% of the assigned application rate-limit quota
+  scope: application-level breaches only (not member-level or combined)
+  latency: not real-time; 1-2 hours after the threshold is reached
+  repeat: a new alert is sent for each additional endpoint that breaches that day
+where_to_read_limits:
+  url: https://www.linkedin.com/developers/apps
+  path: App > Analytics tab
+  caveat: >-
+    Only shows usage and limits for endpoints you have called at least once
+    today (UTC); to see an unlisted endpoint's limit you must make one test call
+    first.
+documented_object_limits:
+  - object: lead notification subscriptions
+    limit: 1500
+    scope: per owner
+    source: https://learn.microsoft.com/en-us/linkedin/marketing/lead-sync/leadsync
+  - object: test ad accounts
+    limit: 1
+    scope: per developer application
+    source: >-
+      https://learn.microsoft.com/en-us/linkedin/marketing/integrations/ads/account-structure/create-and-manage-accounts
+  - object: ad accounts writable in the Development access tier
+    limit: 5
+    scope: per application
+    source: https://learn.microsoft.com/en-us/linkedin/marketing/integrations/marketing-tiers
+x-evidence:
+  fetched: '2026-08-13'
+  checks:
+    - url: https://learn.microsoft.com/en-us/linkedin/shared/api-guide/concepts/rate-limits
+      http_status: 200
+    - url: https://learn.microsoft.com/en-us/linkedin/shared/api-guide/concepts/error-handling
+      http_status: 200

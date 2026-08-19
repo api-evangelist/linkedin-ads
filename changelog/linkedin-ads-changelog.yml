@@ -1,0 +1,122 @@
+generated: '2026-08-13'
+method: searched
+source: https://learn.microsoft.com/en-us/linkedin/marketing/integrations/recent-changes
+scheme: dated monthly versions (YYYYMM) selected by the Linkedin-Version request header
+current_version: '202607'
+cadence: monthly
+support_window: minimum 12 months, then sunset
+archive: https://learn.microsoft.com/en-us/linkedin/marketing/integrations/recent-changes (Archived Marketing
+  API Changes section)
+note: Recent window only; LinkedIn publishes one changelog section per monthly version, split into Product
+  & Platform Announcements, Breaking Changes and Reminders. Every version listed here also carries a dated
+  sunset — see lifecycle/linkedin-ads-lifecycle.yml.
+entries:
+- version: '202607'
+  label: July 2026
+  date: '2026-07-01'
+  breaking: false
+  highlights:
+  - Predictive Audiences API
+  - Conversions API
+  - Create and Manage Campaigns
+  breaking_changes: []
+- version: '202606'
+  label: June 2026
+  date: '2026-06-01'
+  breaking: false
+  highlights:
+  - Company Intelligence API
+  - 'companySize '
+  - 'industry '
+  - 'countryCode '
+  - 'costInLocalCurrencyPerPaidQualifiedLead '
+  - 'Dynamic UTM API '
+  breaking_changes: []
+- version: '202605'
+  label: May 2026
+  date: '2026-05-01'
+  breaking: true
+  highlights:
+  - 'Events Management API '
+  - 'endsAt '
+  - 'Event Ads API '
+  - 'Off-platform Event Ads '
+  - 'Conversions API '
+  - 'GOOGLE_AID : The Google Advertising ID (GAID), a unique, user-resettable, and anonymous identifier
+    for Android devices.'
+  breaking_changes:
+  - 'Member Post Statistics API and Member Video Statistics API '
+- version: '202604'
+  label: April 2026
+  date: '2026-04-01'
+  breaking: true
+  highlights:
+  - 'Member Post Statistics : New Creator Analytics Metrics The /memberCreatorPostAnalytics endpoint now
+    supports new metrics: POST_SEND : Number of times post entities were sent via LinkedIn messaging.'
+  - 'POST_SAVE : Number of times post entities were saved.'
+  - 'LINK_CLICKS : Number of clicks on links within post entities.'
+  - 'PREMIUM_CTA_CLICKS : Number of clicks on premium call-to-action buttons.'
+  - 'FOLLOWER_GAINED_FROM_CONTENT : Number of new followers gained from post entities.'
+  - 'PROFILE_VIEW_FROM_CONTENT : Number of profile views generated from post entities.'
+  breaking_changes:
+  - 202504 - Apr 15, 2026
+  - 202505 - May 15, 2026
+  - 202506 - Jun 15, 2026
+- version: '202603'
+  label: March 2026
+  date: '2026-03-01'
+  breaking: true
+  highlights:
+  - 'Company Intelligence API '
+  - 'conversions '
+  - 'Lead Sync API '
+  - 'Ads Targeting Facets API '
+  - 'typeahead: Searches for buyer group segments by keyword (Example: Query "software" returns matching
+    product categories).'
+  - 'Brand Lift Testing API : Maximum of 50 Campaign Groups per Test Brand Lift Tests are limited to 50
+    Campaign Groups maximum upon creation.'
+  breaking_changes:
+  - 202503 - Mar 16, 2026
+  - 202504 - Apr 15, 2026
+  - 202505 - May 15, 2026
+- version: '202602'
+  label: February 2026
+  date: '2026-02-01'
+  breaking: true
+  highlights:
+  - 'Videos API '
+  - 'linkbackContext : A string that provides context for linking back to the original source, such as
+    a URL pointing to the specific template or tool.'
+  - 'Ad Campaigns API & Ad Budget Pricing API '
+  breaking_changes:
+  - 202502 - Feb 16, 2026
+  - 202503 - Mar 16, 2026
+  - 202504 - Apr 15, 2026
+- version: '202601'
+  label: January 2026
+  date: '2026-01-01'
+  breaking: true
+  highlights:
+  - 'Ad Analytics API '
+  breaking_changes:
+  - 202501 - Jan 15, 2026
+  - 202502 - Feb 16, 2026
+  - 202503 - Mar 16, 2026
+- version: '202511'
+  label: November 2025
+  date: '2025-11-01'
+  breaking: true
+  highlights:
+  - 'Predictive Audiences API '
+  - 'Ad Lift Tests API '
+  - 'Lead Sync API '
+  - 'Member Authentication '
+  breaking_changes:
+  - 202411 - Nov 17, 2025
+  - 202501 - Jan 15, 2026
+  - 202502 - Feb 16, 2026
+x-evidence:
+  fetched: '2026-08-13'
+  checks:
+  - url: https://learn.microsoft.com/en-us/linkedin/marketing/integrations/recent-changes
+    http_status: 200

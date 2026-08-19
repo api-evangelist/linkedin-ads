@@ -1,0 +1,139 @@
+generated: '2026-08-13'
+method: searched
+source: https://learn.microsoft.com/en-us/linkedin/marketing/versioning
+versioning:
+  scheme: request-header
+  header: Linkedin-Version
+  format: YYYYMM
+  current: '202607'
+  current_label: July 2026
+  base_path: https://api.linkedin.com/rest/
+  first_versioned_release: '202206'
+  cadence: monthly
+  support_window: minimum 12 months per version
+  unversioned_calls_allowed: false
+  docs: https://learn.microsoft.com/en-us/linkedin/marketing/versioning
+  note: >-
+    Every versioned call MUST send Linkedin-Version; the latest version is not
+    applied by default. A second header, X-Restli-Protocol-Version: 2.0.0,
+    selects the Rest.li protocol version and is required on most operations.
+deprecation:
+  policy_url: https://learn.microsoft.com/en-us/linkedin/shared/breaking-change-policy
+  migrations_url: https://learn.microsoft.com/en-us/linkedin/marketing/integrations/migrations
+  sunset_header: false
+  rfc8594: false
+  signal: >-
+    HTTP 426 "Version Header is Deprecated" is returned when the version passed
+    in the version header has been sunset. LinkedIn does not emit RFC 8594
+    Sunset/Deprecation response headers; sunset dates are published as a dated
+    table on the migrations page and announced by email to app owners.
+  notice_channel: email to Developer Admins, plus the migrations table
+  breaking_change_definition:
+    breaking:
+      - changes to existing permission definitions
+      - removal of an allowed parameter, request field or response field
+      - addition of a required parameter or request field without a default
+      - changes to the intended functionality of an endpoint
+      - introduction of a new validation
+    non_breaking:
+      - addition of new endpoints or methods
+      - addition of new response fields or optional request fields
+      - addition of a new value returned for an existing text field
+      - changes to field order, data length or response size
+      - changes to error messages (do not parse them; rely on codes)
+  exception: >-
+    LinkedIn reserves the right to release a patch version inside the supported
+    stable window for critical security, privacy or bug fixes.
+supported_versions:
+  - version: '202607'
+    label: July 2026
+    status: active
+    sunset: '2027-07-15'
+  - version: '202606'
+    label: June 2026
+    status: active
+    sunset: '2027-06-15'
+  - version: '202605'
+    label: May 2026
+    status: active
+    sunset: '2027-05-15'
+  - version: '202604'
+    label: April 2026
+    status: active
+    sunset: '2027-04-15'
+  - version: '202603'
+    label: March 2026
+    status: active
+    sunset: '2027-03-16'
+  - version: '202602'
+    label: February 2026
+    status: active
+    sunset: '2027-02-15'
+  - version: '202601'
+    label: January 2026
+    status: active
+    sunset: '2027-01-15'
+  - version: '202511'
+    label: November 2025
+    status: active
+    sunset: '2026-11-16'
+  - version: '202510'
+    label: October 2025
+    status: active
+    sunset: '2026-10-15'
+  - version: '202509'
+    label: September 2025
+    status: active
+    sunset: '2026-09-15'
+  - version: '202508'
+    label: August 2025
+    status: active
+    sunset: '2026-08-17'
+  - version: '202507'
+    label: July 2025
+    status: deprecated
+    sunset: '2026-07-15'
+  - version: '202506'
+    label: June 2025
+    status: deprecated
+    sunset: '2026-06-15'
+  - version: '202505'
+    label: May 2025
+    status: deprecated
+    sunset: '2026-05-15'
+  - version: '202504'
+    label: April 2025
+    status: deprecated
+    sunset: '2026-04-15'
+  - version: unversioned
+    label: legacy unversioned /v2 Marketing calls
+    status: deprecated
+    sunset: '2024-12-16'
+sla:
+  url: null
+  uptime_target: null
+  note: >-
+    No public SLA or uptime commitment is published for the Marketing API
+    Program; SLAs are negotiated inside the partner programs.
+status_page: https://www.linkedin-apistatus.com
+status_page_note: >-
+  The Atlassian Statuspage at linkedin.statuspage.io now redirects to
+  linkedin-apistatus.com ("We have moved to linkedin-apistatus.com"); the
+  machine-readable summary is at /api/v2/summary.json.
+deprecated_operations: []
+deprecated_fields:
+  - field: /targeting
+    replacement: /targetingCriteria
+    signal: TARGETING_FIELD_DEPRECATED (HTTP 400)
+    source: https://learn.microsoft.com/en-us/linkedin/marketing/error-responses
+x-evidence:
+  fetched: '2026-08-13'
+  checks:
+    - url: https://learn.microsoft.com/en-us/linkedin/marketing/versioning
+      http_status: 200
+    - url: https://learn.microsoft.com/en-us/linkedin/marketing/integrations/migrations
+      http_status: 200
+    - url: https://learn.microsoft.com/en-us/linkedin/shared/breaking-change-policy
+      http_status: 200
+    - url: https://www.linkedin-apistatus.com/api/v2/summary.json
+      http_status: 200

@@ -1,0 +1,145 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  openapi/_original/linkedin-ads-openapi.yml plus the LinkedIn Marketing docs
+  account-structure and lead-sync references
+note: >-
+  Entity graph for the advertising core. Every entity is addressed by a LinkedIn
+  URN (urn:li:<entityType>:<id>), so relationships are carried as URN-valued
+  fields rather than nested objects. Derived from the repository OpenAPI (an API
+  Evangelist partial representation — LinkedIn publishes no OpenAPI) and
+  reconciled against the published account-structure hierarchy.
+identifier_scheme:
+  format: 'urn:li:<entityType>:<id>'
+  compound_example: 'urn:li:versionedLeadGenForm:(urn:li:leadGenForm:6851219773716516864,1)'
+  created_entity_id_header: x-restli-id
+  docs: https://learn.microsoft.com/en-us/linkedin/shared/api-guide/concepts/urns
+hierarchy:
+  - Ad Account
+  - Campaign Group
+  - Campaign
+  - Creative
+entities:
+  - name: AdAccount
+    urn: 'urn:li:sponsoredAccount:{id}'
+    path: /rest/adAccounts
+    operations: [createAdAccount, getAdAccount]
+    key_fields: [name, type, status, currency, reference, test]
+    source: openapi/linkedin-ads-adaccounts-api-openapi.yml
+  - name: AdCampaignGroup
+    urn: 'urn:li:sponsoredCampaignGroup:{id}'
+    path: /rest/adAccounts/{adAccountId}/adCampaignGroups
+    operations: [createAdCampaignGroup]
+    key_fields: [account, name, status, runSchedule, totalBudget]
+    source: openapi/linkedin-ads-adaccounts-api-openapi.yml
+  - name: AdCampaign
+    urn: 'urn:li:sponsoredCampaign:{id}'
+    path: /rest/adAccounts/{adAccountId}/adCampaigns
+    operations: [createAdCampaign]
+    key_fields:
+      - account
+      - campaignGroup
+      - objectiveType
+      - type
+      - costType
+      - dailyBudget
+      - totalBudget
+      - targetingCriteria
+      - creativeSelection
+    source: openapi/linkedin-ads-adaccounts-api-openapi.yml
+  - name: Creative
+    urn: 'urn:li:sponsoredCreative:{id}'
+    path: /rest/adAccounts/{adAccountId}/creatives
+    operations: [createCreative]
+    key_fields: [campaign, content, intendedStatus]
+    source: openapi/linkedin-ads-adaccounts-api-openapi.yml
+  - name: AdTargetingFacet
+    path: /rest/adTargetingFacets
+    operations: [listAdTargetingFacets]
+    key_fields: [facetName, entityTypes]
+    source: openapi/linkedin-ads-adtargetingfacets-api-openapi.yml
+  - name: AdTargetingEntity
+    path: /rest/adTargetingEntities
+    operations: [getAdTargetingEntities]
+    key_fields: [urn, name, facet]
+    source: openapi/linkedin-ads-adtargetingentities-api-openapi.yml
+  - name: AudienceCount
+    path: /rest/audienceCounts
+    operations: [getAudienceCounts]
+    key_fields: [total, active, targetingCriteria]
+    source: openapi/linkedin-ads-audiencecounts-api-openapi.yml
+  - name: AdBudgetPricing
+    path: /rest/adBudgetPricing
+    operations: [getAdBudgetPricing]
+    key_fields: [suggestedBid, dailyBudgetLimits, bidLimits]
+    source: openapi/linkedin-ads-adbudgetpricing-api-openapi.yml
+  - name: MoneyAmount
+    kind: value-object
+    key_fields: [currencyCode, amount]
+    source: openapi/_original/linkedin-ads-openapi.yml
+  - name: LeadNotificationSubscription
+    path: /rest/leadNotifications
+    key_fields: [owner, webhook, id, leadType, versionedForm, associatedEntity]
+    source: https://learn.microsoft.com/en-us/linkedin/marketing/lead-sync/leadsync
+    note: Documented resource; not represented in the repository OpenAPI.
+relationships:
+  - from: AdCampaignGroup
+    to: AdAccount
+    type: belongs_to
+    via: account
+  - from: AdAccount
+    to: AdCampaignGroup
+    type: has_many
+    via: /adAccounts/{adAccountId}/adCampaignGroups
+  - from: AdCampaign
+    to: AdAccount
+    type: belongs_to
+    via: account
+  - from: AdCampaign
+    to: AdCampaignGroup
+    type: belongs_to
+    via: campaignGroup
+  - from: AdCampaignGroup
+    to: AdCampaign
+    type: has_many
+    via: /adAccounts/{adAccountId}/adCampaigns
+  - from: Creative
+    to: AdCampaign
+    type: belongs_to
+    via: campaign
+  - from: AdCampaign
+    to: Creative
+    type: has_many
+    via: /adAccounts/{adAccountId}/creatives
+  - from: AdCampaign
+    to: AdTargetingEntity
+    type: has_many
+    via: targetingCriteria (include/exclude facet URN lists)
+  - from: AdTargetingEntity
+    to: AdTargetingFacet
+    type: belongs_to
+    via: facet
+  - from: AudienceCount
+    to: AdTargetingEntity
+    type: references
+    via: targetingCriteria
+  - from: AdCampaignGroup
+    to: MoneyAmount
+    type: has_one
+    via: totalBudget
+  - from: AdCampaign
+    to: MoneyAmount
+    type: has_one
+    via: dailyBudget
+  - from: LeadNotificationSubscription
+    to: AdAccount
+    type: belongs_to
+    via: owner.sponsoredAccount
+x-provenance:
+  spec_is_provider_published: false
+  spec_note: >-
+    LinkedIn publishes no machine-readable API contract. The OpenAPI in this
+    repository is an API Evangelist partial representation of the documented
+    endpoints; entity names, paths and field names above were checked against
+    the LinkedIn documentation, but operation coverage is partial by
+    construction.

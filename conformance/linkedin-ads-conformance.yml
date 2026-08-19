@@ -1,0 +1,108 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  learn.microsoft.com LinkedIn API concept docs, plus live probes of
+  www.linkedin.com/.well-known/
+note: >-
+  Asserts only cross-cutting standards that could be evidenced from LinkedIn's
+  own documentation or a probe. LinkedIn publishes no certification or
+  compliance-program page for the Marketing API Program, so no Compliance
+  pointer is emitted from this file.
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: >-
+      3-legged authorization code flow documented at
+      learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow;
+      authorization https://www.linkedin.com/oauth/v2/authorization, token
+      https://www.linkedin.com/oauth/v2/accessToken.
+  - id: oauth2-refresh-tokens
+    conforms: true
+    evidence: >-
+      refresh_token + refresh_token_expires_in returned on token exchange;
+      programmatic refresh documented.
+  - id: oidc
+    conforms: true
+    evidence: >-
+      OpenID Connect discovery document served at
+      https://www.linkedin.com/oauth/.well-known/openid-configuration (HTTP 200)
+      with issuer, jwks_uri, RS256 id tokens and openid/profile/email scopes.
+  - id: rfc8414-oauth-authorization-server-metadata
+    conforms: false
+    evidence: /.well-known/oauth-authorization-server returns 404 on every LinkedIn host probed.
+  - id: rfc9116-security-txt
+    conforms: true
+    evidence: >-
+      https://www.linkedin.com/.well-known/security.txt (HTTP 200) with Contact,
+      Canonical and Policy fields pointing at hackerone.com/linkedin.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      Errors use LinkedIn's own envelope (message/serviceErrorCode/status/code/
+      errorDetailType/errorDetails) with content type application/json; no
+      problem+json and no problem type URIs.
+  - id: rfc8594-sunset-header
+    conforms: false
+    evidence: >-
+      Version sunsets are published as a dated table and emailed; deprecated
+      versions fail with HTTP 426 rather than Sunset/Deprecation headers.
+  - id: idempotency-keys
+    conforms: false
+    evidence: No idempotency key or replay protection is documented for write operations.
+  - id: pagination
+    conforms: true
+    evidence: >-
+      Offset pagination via start/count with a paging object in the response;
+      cursor-based pagination on Advertising collections.
+  - id: restli-2.0
+    conforms: true
+    evidence: >-
+      X-Restli-Protocol-Version: 2.0.0 required; URNs, finders (q=), field
+      projections and query tunneling are Rest.li semantics.
+  - id: openapi
+    conforms: false
+    evidence: >-
+      LinkedIn publishes no OpenAPI/Swagger document. /openapi.json,
+      /swagger.json and /api-docs 404 on developer.linkedin.com and on the API
+      host root; /rest/openapi.json returns 401 EMPTY_ACCESS_TOKEN (the Rest.li
+      router treating it as a resource path, not a spec).
+  - id: asyncapi
+    conforms: false
+    evidence: No AsyncAPI document is published; the only push surface is Lead Sync webhooks.
+  - id: graphql
+    conforms: false
+    evidence: No public GraphQL endpoint is documented for the Marketing API Program.
+  - id: mcp
+    conforms: false
+    evidence: >-
+      No first-party MCP server. The only LinkedIn entry in the MCP registry is a
+      third-party HAPI MCP wrapper (ai.com.mcp/linkedin).
+  - id: a2a
+    conforms: false
+    evidence: >-
+      /.well-known/agent-card.json and /.well-known/agent.json return 404 on
+      api.linkedin.com, www.linkedin.com and developer.linkedin.com.
+  - id: json-api
+    conforms: false
+    evidence: Responses are Rest.li JSON, not JSON:API.
+  - id: scim
+    conforms: false
+  - id: odata
+    conforms: false
+  - id: fhir
+    conforms: false
+  - id: psd2
+    conforms: false
+x-evidence:
+  fetched: '2026-08-13'
+  checks:
+    - url: https://www.linkedin.com/oauth/.well-known/openid-configuration
+      http_status: 200
+    - url: https://www.linkedin.com/.well-known/security.txt
+      http_status: 200
+    - url: https://api.linkedin.com/openapi.json
+      http_status: 404
+    - url: https://api.linkedin.com/rest/openapi.json
+      http_status: 401
+    - url: https://api.linkedin.com/.well-known/agent-card.json
+      http_status: 404
