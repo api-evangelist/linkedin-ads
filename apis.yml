@@ -80,7 +80,7 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/linkedin/marketing/
   baseURL: https://api.linkedin.com
   tags:
-  - Ad Accounts
+  - AdAccounts
   tags_raw:
   - AdAccounts
   properties:
@@ -108,7 +108,7 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/linkedin/marketing/
   baseURL: https://api.linkedin.com
   tags:
-  - Ad Targeting Entities
+  - AdTargetingEntities
   tags_raw:
   - AdTargetingEntities
   properties:
@@ -135,7 +135,7 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/linkedin/marketing/
   baseURL: https://api.linkedin.com
   tags:
-  - Audience Counts
+  - AudienceCounts
   tags_raw:
   - AudienceCounts
   properties:
