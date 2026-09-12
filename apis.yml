@@ -1,5 +1,6 @@
 aid: linkedin-ads
 name: LinkedIn Marketing API
+x-parent: linkedin
 description: >-
   The LinkedIn Marketing API Program provides REST APIs that help businesses
   create LinkedIn marketing campaigns, report on campaign performance, manage
@@ -42,8 +43,7 @@ tags:
   - Audience Targeting
   - Conversions API
   - Social Marketing
-url: >-
-  https://raw.githubusercontent.com/api-evangelist/linkedin-ads/refs/heads/main/apis.yml
+url: https://business.linkedin.com/marketing-solutions
 created: '2026-05-11'
 modified: '2026-08-13'
 specificationVersion: '0.23'
