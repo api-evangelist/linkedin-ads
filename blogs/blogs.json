@@ -3,7 +3,10 @@
   "feeds": [
     {
       "source": "https://linkedin.zendesk.com/hc/en-us",
-      "error": "HTTPError"
+      "feed_url": "https://linkedin.zendesk.com/hc/en-us",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     },
     {
       "source": "https://www.linkedin.com/business/marketing/blog/linkedin-ads",
@@ -13,7 +16,7 @@
       "method": "none"
     }
   ],
-  "fetched": "2026-09-06T19:17:18Z",
+  "fetched": "2026-09-13T13:00:00Z",
   "post_count": 13,
   "feed_nature": "vendor-blog",
   "feed_nature_basis": "path_blog",
