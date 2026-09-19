@@ -61,6 +61,13 @@ apis:
   - Marketing
   - Campaign Management
   - Lead Sync
+  - Conversion
+  - Matched Audiences
+  tags_raw:
+  - Advertising
+  - Marketing
+  - Campaign Management
+  - Lead Sync
   - Conversions
   - Matched Audiences
   properties:
