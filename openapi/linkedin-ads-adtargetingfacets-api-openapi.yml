@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: LinkedIn Marketing AdAccounts AdTargetingFacets API
+  title: LinkedIn Marketing Ad Targeting Facets API
   description: 'Partial OpenAPI 3.1 representation of the LinkedIn Marketing API for
 
     advertising, campaign management, audience targeting, and reporting. Uses
@@ -11,9 +11,7 @@ info:
 
     Reference documentation lives at
 
-    https://learn.microsoft.com/en-us/linkedin/marketing/.
-
-    '
+    https://learn.microsoft.com/en-us/linkedin/marketing/.'
   version: '2026.05'
   contact:
     name: LinkedIn Marketing API Program

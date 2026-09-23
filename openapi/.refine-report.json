@@ -1,11 +1,7 @@
 {
   "provider": "linkedin-ads",
   "sources": [
-    "linkedin-ads-adaccounts-api-openapi.yml",
-    "linkedin-ads-adbudgetpricing-api-openapi.yml",
-    "linkedin-ads-adtargetingentities-api-openapi.yml",
-    "linkedin-ads-adtargetingfacets-api-openapi.yml",
-    "linkedin-ads-audiencecounts-api-openapi.yml"
+    "_original/linkedin-ads-openapi.yml"
   ],
   "outputs": [
     "linkedin-ads-adaccounts-api-openapi.yml",
@@ -14,9 +10,36 @@
     "linkedin-ads-adtargetingfacets-api-openapi.yml",
     "linkedin-ads-audiencecounts-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 3 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "linkedin-ads-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "linkedin-ads-openapi.yml: tagged paths POST /adAccounts -> AdAccounts",
+    "linkedin-ads-openapi.yml: tagged paths GET /adAccounts/{adAccountId} -> AdAccounts",
+    "linkedin-ads-openapi.yml: tagged paths POST /adAccounts/{adAccountId}/adCampaignGroups -> AdAccounts",
+    "linkedin-ads-openapi.yml: tagged paths POST /adAccounts/{adAccountId}/adCampaigns -> AdAccounts",
+    "linkedin-ads-openapi.yml: tagged paths POST /adAccounts/{adAccountId}/creatives -> AdAccounts",
+    "linkedin-ads-openapi.yml: tagged paths GET /adTargetingFacets -> AdTargetingFacets",
+    "linkedin-ads-openapi.yml: tagged paths GET /adTargetingEntities -> AdTargetingEntities",
+    "linkedin-ads-openapi.yml: tagged paths GET /audienceCounts -> AudienceCounts",
+    "linkedin-ads-openapi.yml: tagged paths GET /adBudgetPricing -> AdBudgetPricing",
+    "linkedin-ads-openapi.yml: declared missing tag: AdAccounts",
+    "linkedin-ads-openapi.yml: declared missing tag: AdBudgetPricing",
+    "linkedin-ads-openapi.yml: declared missing tag: AdTargetingEntities",
+    "linkedin-ads-openapi.yml: declared missing tag: AdTargetingFacets",
+    "linkedin-ads-openapi.yml: declared missing tag: AudienceCounts",
+    "superseded outputs removed: linkedin-ads-ad-accounts-api-openapi.yml, linkedin-ads-ad-targeting-entities-api-openapi.yml, linkedin-ads-audience-counts-api-openapi.yml",
+    "apis.yml register: written (+3 apis, 6 total)"
+  ],
+  "skipped": [
+    "linkedin-ads-ad-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "linkedin-ads-ad-targeting-entities-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "linkedin-ads-adbudgetpricing-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "linkedin-ads-adtargetingfacets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "linkedin-ads-audience-counts-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

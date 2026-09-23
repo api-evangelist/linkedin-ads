@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: LinkedIn Marketing AdAccounts AudienceCounts API
+  title: LinkedIn Marketing Ad Targeting Entities API
   description: 'Partial OpenAPI 3.1 representation of the LinkedIn Marketing API for
 
     advertising, campaign management, audience targeting, and reporting. Uses
@@ -11,9 +11,7 @@ info:
 
     Reference documentation lives at
 
-    https://learn.microsoft.com/en-us/linkedin/marketing/.
-
-    '
+    https://learn.microsoft.com/en-us/linkedin/marketing/.'
   version: '2026.05'
   contact:
     name: LinkedIn Marketing API Program
@@ -25,12 +23,12 @@ security:
 - OAuth2:
   - rw_ads
 tags:
-- name: AudienceCounts
+- name: Ad Targeting Entities
 paths:
-  /audienceCounts:
+  /adTargetingEntities:
     get:
-      summary: Estimate audience count
-      operationId: getAudienceCounts
+      summary: Discover entities within a targeting facet
+      operationId: getAdTargetingEntities
       security:
       - OAuth2:
         - r_ads
@@ -43,12 +41,23 @@ paths:
         schema:
           type: string
           enum:
-          - targetingCriteria
+          - adTargetingFacet
+      - name: queryVersion
+        in: query
+        schema:
+          type: string
+          default: QUERY_USES_URNS
+      - name: facet
+        in: query
+        required: true
+        description: Facet URN, e.g. `urn:li:adTargetingFacet:seniorities`.
+        schema:
+          type: string
       responses:
         '200':
-          description: Audience count results.
+          description: Entities within the requested facet.
       tags:
-      - AudienceCounts
+      - Ad Targeting Entities
 components:
   parameters:
     LinkedInVersion:
