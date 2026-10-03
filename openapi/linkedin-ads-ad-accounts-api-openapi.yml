@@ -162,13 +162,31 @@ paths:
       - Ad Accounts
 components:
   schemas:
-    MoneyAmount:
+    AdCampaignGroup:
       type: object
       properties:
-        amount:
+        account:
           type: string
-        currencyCode:
+        name:
           type: string
+        runSchedule:
+          type: object
+          properties:
+            start:
+              type: integer
+              format: int64
+            end:
+              type: integer
+              format: int64
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - PAUSED
+          - ARCHIVED
+          - DRAFT
+        totalBudget:
+          $ref: '#/components/schemas/MoneyAmount'
     AdAccount:
       type: object
       required:
@@ -198,22 +216,11 @@ components:
           enum:
           - BUSINESS
           - ENTERPRISE
-    AdCampaignGroup:
+    Creative:
       type: object
       properties:
-        account:
+        campaign:
           type: string
-        name:
-          type: string
-        runSchedule:
-          type: object
-          properties:
-            start:
-              type: integer
-              format: int64
-            end:
-              type: integer
-              format: int64
         status:
           type: string
           enum:
@@ -221,8 +228,21 @@ components:
           - PAUSED
           - ARCHIVED
           - DRAFT
-        totalBudget:
-          $ref: '#/components/schemas/MoneyAmount'
+        type:
+          type: string
+          enum:
+          - TEXT_AD
+          - SPONSORED_UPDATES
+          - SPONSORED_INMAILS
+        variables:
+          type: object
+    MoneyAmount:
+      type: object
+      properties:
+        amount:
+          type: string
+        currencyCode:
+          type: string
     AdCampaign:
       type: object
       properties:
@@ -270,26 +290,6 @@ components:
           type: string
         offsiteDeliveryEnabled:
           type: boolean
-    Creative:
-      type: object
-      properties:
-        campaign:
-          type: string
-        status:
-          type: string
-          enum:
-          - ACTIVE
-          - PAUSED
-          - ARCHIVED
-          - DRAFT
-        type:
-          type: string
-          enum:
-          - TEXT_AD
-          - SPONSORED_UPDATES
-          - SPONSORED_INMAILS
-        variables:
-          type: object
   parameters:
     LinkedInVersion:
       name: LinkedIn-Version
