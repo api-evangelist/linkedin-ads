@@ -162,80 +162,6 @@ paths:
       - Ad Accounts
 components:
   schemas:
-    AdCampaignGroup:
-      type: object
-      properties:
-        account:
-          type: string
-        name:
-          type: string
-        runSchedule:
-          type: object
-          properties:
-            start:
-              type: integer
-              format: int64
-            end:
-              type: integer
-              format: int64
-        status:
-          type: string
-          enum:
-          - ACTIVE
-          - PAUSED
-          - ARCHIVED
-          - DRAFT
-        totalBudget:
-          $ref: '#/components/schemas/MoneyAmount'
-    AdAccount:
-      type: object
-      required:
-      - currency
-      - name
-      - type
-      - reference
-      properties:
-        currency:
-          type: string
-          example: USD
-        name:
-          type: string
-        notifiedOnCampaignOptimization:
-          type: boolean
-        notifiedOnCreativeApproval:
-          type: boolean
-        notifiedOnCreativeRejection:
-          type: boolean
-        notifiedOnEndOfCampaign:
-          type: boolean
-        reference:
-          type: string
-          description: Owning organization URN, e.g. `urn:li:organization:101202303`.
-        type:
-          type: string
-          enum:
-          - BUSINESS
-          - ENTERPRISE
-    Creative:
-      type: object
-      properties:
-        campaign:
-          type: string
-        status:
-          type: string
-          enum:
-          - ACTIVE
-          - PAUSED
-          - ARCHIVED
-          - DRAFT
-        type:
-          type: string
-          enum:
-          - TEXT_AD
-          - SPONSORED_UPDATES
-          - SPONSORED_INMAILS
-        variables:
-          type: object
     MoneyAmount:
       type: object
       properties:
@@ -290,6 +216,80 @@ components:
           type: string
         offsiteDeliveryEnabled:
           type: boolean
+    Creative:
+      type: object
+      properties:
+        campaign:
+          type: string
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - PAUSED
+          - ARCHIVED
+          - DRAFT
+        type:
+          type: string
+          enum:
+          - TEXT_AD
+          - SPONSORED_UPDATES
+          - SPONSORED_INMAILS
+        variables:
+          type: object
+    AdAccount:
+      type: object
+      required:
+      - currency
+      - name
+      - type
+      - reference
+      properties:
+        currency:
+          type: string
+          example: USD
+        name:
+          type: string
+        notifiedOnCampaignOptimization:
+          type: boolean
+        notifiedOnCreativeApproval:
+          type: boolean
+        notifiedOnCreativeRejection:
+          type: boolean
+        notifiedOnEndOfCampaign:
+          type: boolean
+        reference:
+          type: string
+          description: Owning organization URN, e.g. `urn:li:organization:101202303`.
+        type:
+          type: string
+          enum:
+          - BUSINESS
+          - ENTERPRISE
+    AdCampaignGroup:
+      type: object
+      properties:
+        account:
+          type: string
+        name:
+          type: string
+        runSchedule:
+          type: object
+          properties:
+            start:
+              type: integer
+              format: int64
+            end:
+              type: integer
+              format: int64
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - PAUSED
+          - ARCHIVED
+          - DRAFT
+        totalBudget:
+          $ref: '#/components/schemas/MoneyAmount'
   parameters:
     LinkedInVersion:
       name: LinkedIn-Version
