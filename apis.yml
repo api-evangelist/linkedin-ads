@@ -140,6 +140,9 @@ apis:
   - type: OpenAPI
     url: openapi/linkedin-ads-audience-counts-api-openapi.yml
 common:
+  - type: CapabilityMap
+    url: capabilities/linkedin-ads-capability-edges.yml
+    name: LinkedIn Marketing API Business Capability Map
   - type: Overlay
     url: overlays/linkedin-ads-adaccounts-api-overlay.yaml
   - type: Overlay

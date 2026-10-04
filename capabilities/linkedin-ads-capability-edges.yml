@@ -1,0 +1,61 @@
+slug: linkedin-ads
+provider: LinkedIn Marketing API
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 5
+edges:
+- tag: Ad Accounts
+  spec_file: linkedin-ads-ad-accounts-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.88
+  evidence: POST /adAccounts/{adAccountId}/adCampaigns  createAdCampaign  Create a campaign; createCreative  Create
+    an ad creative
+  reason: Operations create advertising accounts, campaign groups, campaigns and creatives on LinkedIn
+    — paid-media/digital marketing campaign management.
+- tag: Ad Targeting Entities
+  spec_file: linkedin-ads-ad-targeting-entities-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.75
+  evidence: GET /adTargetingEntities  Discover entities within a targeting facet
+  reason: Audience targeting discovery for LinkedIn paid ad campaigns; supports digital/paid media targeting.
+    Thin surface so moderate confidence.
+- tag: AdTargetingFacets
+  spec_file: linkedin-ads-adtargetingfacets-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.72
+  evidence: GET /adTargetingFacets  listAdTargetingFacets  List ad targeting facets
+  reason: Lists available audience targeting dimensions for paid LinkedIn ads; supports digital marketing
+    targeting setup.
+- tag: AdBudgetPricing
+  spec_file: linkedin-ads-adbudgetpricing-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.7
+  evidence: GET /adBudgetPricing  getAdBudgetPricing  Get ad budget pricing
+  reason: Provides bid/budget pricing guidance for paid media buying on LinkedIn — part of digital marketing
+    campaign operations, not enterprise pricing management.
+- tag: Audience Counts
+  spec_file: linkedin-ads-audience-counts-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.7
+  evidence: GET /audienceCounts  getAudienceCounts  Estimate audience count
+  reason: Audience size estimation for ad targeting — media planning within digital marketing; could also
+    be market intelligence but context is ad-targeting.
