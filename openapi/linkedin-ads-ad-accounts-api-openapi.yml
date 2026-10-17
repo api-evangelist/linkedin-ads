@@ -161,7 +161,45 @@ paths:
       tags:
       - Ad Accounts
 components:
+  parameters:
+    LinkedInVersion:
+      name: LinkedIn-Version
+      in: header
+      required: true
+      description: API version in `YYYYMM` format, e.g. `202605`.
+      schema:
+        type: string
+        pattern: ^\d{6}$
   schemas:
+    AdAccount:
+      type: object
+      required:
+      - currency
+      - name
+      - type
+      - reference
+      properties:
+        currency:
+          type: string
+          example: USD
+        name:
+          type: string
+        notifiedOnCampaignOptimization:
+          type: boolean
+        notifiedOnCreativeApproval:
+          type: boolean
+        notifiedOnCreativeRejection:
+          type: boolean
+        notifiedOnEndOfCampaign:
+          type: boolean
+        reference:
+          type: string
+          description: Owning organization URN, e.g. `urn:li:organization:101202303`.
+        type:
+          type: string
+          enum:
+          - BUSINESS
+          - ENTERPRISE
     MoneyAmount:
       type: object
       properties:
@@ -169,6 +207,26 @@ components:
           type: string
         currencyCode:
           type: string
+    Creative:
+      type: object
+      properties:
+        campaign:
+          type: string
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - PAUSED
+          - ARCHIVED
+          - DRAFT
+        type:
+          type: string
+          enum:
+          - TEXT_AD
+          - SPONSORED_UPDATES
+          - SPONSORED_INMAILS
+        variables:
+          type: object
     AdCampaign:
       type: object
       properties:
@@ -216,55 +274,6 @@ components:
           type: string
         offsiteDeliveryEnabled:
           type: boolean
-    Creative:
-      type: object
-      properties:
-        campaign:
-          type: string
-        status:
-          type: string
-          enum:
-          - ACTIVE
-          - PAUSED
-          - ARCHIVED
-          - DRAFT
-        type:
-          type: string
-          enum:
-          - TEXT_AD
-          - SPONSORED_UPDATES
-          - SPONSORED_INMAILS
-        variables:
-          type: object
-    AdAccount:
-      type: object
-      required:
-      - currency
-      - name
-      - type
-      - reference
-      properties:
-        currency:
-          type: string
-          example: USD
-        name:
-          type: string
-        notifiedOnCampaignOptimization:
-          type: boolean
-        notifiedOnCreativeApproval:
-          type: boolean
-        notifiedOnCreativeRejection:
-          type: boolean
-        notifiedOnEndOfCampaign:
-          type: boolean
-        reference:
-          type: string
-          description: Owning organization URN, e.g. `urn:li:organization:101202303`.
-        type:
-          type: string
-          enum:
-          - BUSINESS
-          - ENTERPRISE
     AdCampaignGroup:
       type: object
       properties:
@@ -290,15 +299,6 @@ components:
           - DRAFT
         totalBudget:
           $ref: '#/components/schemas/MoneyAmount'
-  parameters:
-    LinkedInVersion:
-      name: LinkedIn-Version
-      in: header
-      required: true
-      description: API version in `YYYYMM` format, e.g. `202605`.
-      schema:
-        type: string
-        pattern: ^\d{6}$
   securitySchemes:
     OAuth2:
       type: oauth2
