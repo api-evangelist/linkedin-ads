@@ -1,4 +1,4 @@
-# LinkedIn Marketing API (linkedin-ads)
+# LinkedIn Marketing API
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,64 +66,159 @@
 
 The LinkedIn Marketing API Program provides REST APIs that help businesses create LinkedIn marketing campaigns, report on campaign performance, manage leads from Lead Gen Forms, target matched audiences, and grow company Pages. It covers Advertising, Reporting and Analytics, Lead Sync, Matched Audiences, Audience Insights, Media Planning, Conversions, Community Management, Event Management, and Company Intelligence APIs. Authentication uses OAuth 2.0 three-legged (authorization code) flow with versioned API access.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/linkedin-ads/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/linkedin-ads/refs/heads/main/apis.yml)
+**Areas:** Advertising · Marketing · LinkedIn · Lead Generation · Audience Targeting · Conversions API · Social Marketing
 
-## Scope
+## LinkedIn Marketing API on APIs.io
 
-- **Type:** Index
+Everything profiled for LinkedIn Marketing API is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/linkedin-ads/](https://apis.io/providers/linkedin-ads/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (6)
 
-- Advertising
-- Marketing
-- LinkedIn
-- Lead Generation
-- Audience Targeting
-- Conversions API
-- Social Marketing
+- [LinkedIn Marketing API](https://apis.io/apis/linkedin-ads/marketing-api/) — REST API for managing LinkedIn advertising campaigns, creatives, reporting, lead sync, matched audiences, conversions tracking, media planning, and…
+- [LinkedIn Marketing API AdBudgetPricing API](https://apis.io/apis/linkedin-ads/linkedin-ads-adbudgetpricing-api/) — The AdBudgetPricing API from LinkedIn Marketing API — 1 operation(s) for adbudgetpricing.
+- [LinkedIn Marketing API AdTargetingFacets API](https://apis.io/apis/linkedin-ads/linkedin-ads-adtargetingfacets-api/) — The AdTargetingFacets API from LinkedIn Marketing API — 1 operation(s) for adtargetingfacets.
+- [LinkedIn Marketing API Ad Accounts API](https://apis.io/apis/linkedin-ads/linkedin-ads-ad-accounts-api/) — The Ad Accounts API from LinkedIn Marketing API — 5 operation(s) for ad accounts.
+- [LinkedIn Marketing API Ad Targeting Entities API](https://apis.io/apis/linkedin-ads/linkedin-ads-ad-targeting-entities-api/) — The Ad Targeting Entities API from LinkedIn Marketing API — 1 operation(s) for ad targeting entities.
+- [LinkedIn Marketing API Audience Counts API](https://apis.io/apis/linkedin-ads/linkedin-ads-audience-counts-api/) — The Audience Counts API from LinkedIn Marketing API — 1 operation(s) for audience counts.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-11
-- **Modified:** 2026-05-11
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### AsyncAPI (1)
 
-### LinkedIn Marketing API
+Event-driven and webhook contracts.
 
-REST API for managing LinkedIn advertising campaigns, creatives, reporting, lead sync, matched audiences, conversions tracking, media planning, and community management. Authentication uses OAuth 2.0 three-legged flow, with required API versioning via the LinkedIn-Version header (YYYYMM format).
+- [Linkedin Ads Webhooks](https://apis.io/asyncapis/linkedin-ads/linkedin-ads-webhooks/)
 
-- **Human URL:** [https://learn.microsoft.com/en-us/linkedin/marketing/](https://learn.microsoft.com/en-us/linkedin/marketing/)
-- **Base URL:** `https://api.linkedin.com`
+#### MCP servers (1)
 
-#### Tags
+Model Context Protocol servers that expose the API to agents.
 
-- Advertising
-- Marketing
-- Campaign Management
-- Lead Sync
-- Conversions
-- Matched Audiences
+- [linkedin-ads-mcp.yml](https://apis.io/servers/linkedin-ads/linkedin-ads-mcp-yml/)
 
-#### Properties
+#### Agentic access (1)
 
-- [Documentation](https://learn.microsoft.com/en-us/linkedin/marketing/)
-- [Quick  Start](https://learn.microsoft.com/en-us/linkedin/marketing/quick-start)
-- [Authentication](https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow)
-- [A P I  Versioning](https://learn.microsoft.com/en-us/linkedin/marketing/versioning)
-- [Developer  Portal](https://developer.linkedin.com/product-catalog/marketing)
-- [Postman Collection](collections/linkedin-ads.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/linkedin-ads.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-## Common Properties
+- [Linkedin Ads Agentic Access](https://apis.io/agentic-access/linkedin-ads/linkedin-ads-agentic-access/)
+
+#### Collections (6)
+
+Postman and Open Collection request collections.
+
+- [LinkedIn Marketing API](https://apis.io/collections/linkedin-ads/open-linkedin-ads/)
+- [LinkedIn Marketing AdAccounts API](https://apis.io/collections/linkedin-ads/open-linkedin-ads-adaccounts-api/)
+- [LinkedIn Marketing AdAccounts AdBudgetPricing API](https://apis.io/collections/linkedin-ads/open-linkedin-ads-adbudgetpricing-api/)
+- [LinkedIn Marketing AdAccounts AdTargetingEntities API](https://apis.io/collections/linkedin-ads/open-linkedin-ads-adtargetingentities-api/)
+- [LinkedIn Marketing AdAccounts AdTargetingFacets API](https://apis.io/collections/linkedin-ads/open-linkedin-ads-adtargetingfacets-api/)
+- [LinkedIn Marketing AdAccounts AudienceCounts API](https://apis.io/collections/linkedin-ads/open-linkedin-ads-audiencecounts-api/)
+
+#### Overlays (5)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Linkedin Ads Adaccounts Api Overlay](https://apis.io/overlays/linkedin-ads/linkedin-ads-adaccounts-api-overlay/)
+- [Linkedin Ads Adbudgetpricing Api Overlay](https://apis.io/overlays/linkedin-ads/linkedin-ads-adbudgetpricing-api-overlay/)
+- [Linkedin Ads Adtargetingentities Api Overlay](https://apis.io/overlays/linkedin-ads/linkedin-ads-adtargetingentities-api-overlay/)
+- [Linkedin Ads Adtargetingfacets Api Overlay](https://apis.io/overlays/linkedin-ads/linkedin-ads-adtargetingfacets-api-overlay/)
+- [Linkedin Ads Audiencecounts Api Overlay](https://apis.io/overlays/linkedin-ads/linkedin-ads-audiencecounts-api-overlay/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Linkedin Ads Authentication](https://apis.io/security/linkedin-ads/linkedin-ads-authentication/)
+- [Linkedin Ads Domain Security](https://apis.io/security/linkedin-ads/linkedin-ads-domain-security/)
+- [Linkedin Ads Vulnerability Disclosure](https://apis.io/security/linkedin-ads/linkedin-ads-vulnerability-disclosure/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Linkedin Ads Scopes](https://apis.io/scopes/linkedin-ads/linkedin-ads-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Linkedin Ads Plans Pricing](https://apis.io/plans/linkedin-ads/linkedin-ads-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Linkedin Ads Rate Limits](https://apis.io/rate-limits/linkedin-ads/linkedin-ads-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://business.linkedin.com/marketing-solutions)
 - [Documentation](https://learn.microsoft.com/en-us/linkedin/marketing/)
-- [Developer  Portal](https://developer.linkedin.com/product-catalog/marketing)
-- [Sign Up](https://www.linkedin.com/developers/apps/new)
+- [Getting started](https://learn.microsoft.com/en-us/linkedin/marketing/quick-start)
+- [API reference](https://learn.microsoft.com/en-us/linkedin/marketing/integrations/ads/ads-overview)
+- [Pricing](https://business.linkedin.com/marketing-solutions/ads/pricing)
+- [Sign up](https://www.linkedin.com/developers/apps/new)
 - [Support](https://linkedin.zendesk.com/hc/en-us)
+- [Blog](https://www.linkedin.com/business/marketing/blog/linkedin-ads)
+- [Security](https://hackerone.com/linkedin?view_policy=true)
+- [Terms of service](https://legal.linkedin.com/api-terms-of-use)
+- [Privacy policy](https://www.linkedin.com/legal/privacy-policy)
+- [GitHub](https://github.com/linkedin-developers)
+- [Status](https://www.linkedin-apistatus.com)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 61.7** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 80.4 |
+| Contract quality | 53.1 |
+| Contract governance | 18.2 |
+| Operational transparency | 60.5 |
+| Developer ergonomics | 70.8 |
+| Access clarity | 65.8 |
+
+**Agent readiness 34.2** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | documented (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 40.2** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/linkedin-ads/](https://apis.io/providers/linkedin-ads/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for LinkedIn Marketing API: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/linkedin-ads/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
